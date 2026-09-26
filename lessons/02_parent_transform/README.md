@@ -14,19 +14,21 @@
 
 ## 実行する
 
-プロジェクトのルートから、Blender の画面を開いて実行する。
-
-```bash
-/Applications/Blender.app/Contents/MacOS/Blender --python lessons/02_parent_transform/lesson.py
-```
-
-画面付き起動では、スクリプトが終わっても **Blender を閉じるまでターミナルは待機**する。ログに `saved:` が出ていれば保存済み。画面なしで検証し、ターミナルへ戻りたい場合はこちら。
+プロジェクトのルートから、画面なしでシーンを生成する。
 
 ```bash
 /Applications/Blender.app/Contents/MacOS/Blender --background --python lessons/02_parent_transform/lesson.py
 ```
 
-Blender の Text Editor で保存済みの `lesson.py` を開き、**Run Script** してもよい。スクリプトは最初に今の作業を初期化するため、残したい `.blend` は先に保存する。実行結果は `output/02_parent_transform.blend` に保存される。すでに別の Blender ウィンドウを開いている場合は自動で切り替わらないので、結果を見たいウィンドウで **File → Open...** からこの `.blend` を開く。
+ログに `saved:` が出れば `output/02_parent_transform.blend` に保存済みで、ターミナルへ戻る。結果を見るときは Blender アプリの **File → Open...** からこの `.blend` を開く。画面付きで起動して実行する場合はこちら。
+
+```bash
+/Applications/Blender.app/Contents/MacOS/Blender --python lessons/02_parent_transform/lesson.py
+```
+
+画面付き起動では、スクリプトが終わっても **Blender を閉じるまでターミナルは待機**する。画面で Location を編集しても `lesson.py` は変わらない。再実行で同じ出力ファイルを作り直すため、画面での変更を残す場合は別名で保存する。詳しくは [スクリプトと画面の関係](../../docs/notes/script-workflow.md) を参照する。
+
+Blender の Text Editor で保存済みの `lesson.py` を開き、**Run Script** してもよい。スクリプトは最初に今の作業を初期化するため、残したい `.blend` は先に保存する。すでに別の Blender ウィンドウを開いている場合は自動で切り替わらない。
 
 ## 画面と数値の対応
 
