@@ -4,7 +4,7 @@
 
 人物、モンスター、背景を、自分で設計・制作・修正・書き出しできるようになる。最終的には Blender のデータ構造と Python API を理解し、再実行可能な制作スクリプト、再利用できる道具、品質を確かめる手順まで自分で作れる状態を目指す。
 
-この表は**今後追加するレッスンの設計図**。現時点で実装済みなのは [01 共有 Mesh](../../lessons/01_shared_mesh/README.md) と [02 Transform と親子](../../lessons/02_parent_transform/README.md)。番号順に全部終えることより、各段階の小さな完成物を作り、疑問が出たらその場で扱うことを優先する。
+この表は**今後追加するレッスンの設計図**。現時点で実装済みなのは [01 共有 Mesh](../../lessons/01_shared_mesh/README.md)、[02 Transform と親子](../../lessons/02_parent_transform/README.md)、[03 Collection](../../lessons/03_collection/README.md)。番号順に全部終えることより、各段階の小さな完成物を作り、疑問が出たらその場で扱うことを優先する。
 
 最初は **Blender の世界だけ**で形、配置、マテリアル、複数部品の組み立てを学ぶ。Unity 連携は背景の小作品まで作れた後の選択レッスンに置く。最初から Unity の用語を前提にしない。
 
@@ -28,7 +28,7 @@
 |---|---|---|
 | 01 | 共有 Mesh ✅ | 1つの Mesh を2つの Object が参照する。`users` と位置を確認。 |
 | [02](../../lessons/02_parent_transform/README.md) | Transform と親子 ✅ | Empty を親にし、local と world の座標を比べる。 |
-| 03 | Collection | 所属を移しても親子関係と位置は変わらない。 |
+| [03](../../lessons/03_collection/README.md) | Collection ✅ | 所属を移しても親子関係と位置は変わらない。 |
 | 04 | 木箱の組み立て | 板を配置し、地面に置きやすい origin を決める。 |
 | 05 | マテリアルの入口 | Principled BSDF の色・金属感・粗さを比較。 |
 | 06 | Modifier の評価 | Bevel の元 Mesh と評価後 Mesh の違いを調べる。 |

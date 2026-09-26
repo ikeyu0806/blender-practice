@@ -27,7 +27,7 @@ Scene（作業する場面）
 |---|---|---|
 | **`.blend` ファイル** | Blender の作業データを保存するファイル。Object や Mesh、Scene などを含む。 | `output/01_shared_mesh.blend`。 |
 | **Scene（シーン）** | Object の配置、カメラ、レンダー設定などを含む作業のまとまり。1つの `.blend` に複数の Scene を持てる。 | 画面最上部右側の `Scene` 欄で選ぶ。[画面での管理方法](notes/scene-ui.md)。 |
-| **Collection（コレクション）** | Object をまとめ、表示や整理を行う入れ物。所属させても親子の位置関係は生まれない。 | Outliner の `Scene Collection`。 |
+| **Collection（コレクション）** | Object をまとめ、表示や整理を行う入れ物。所属させても親子の位置関係は生まれない。1つの Object は複数の Collection に所属できる。 | Outliner の `Scene Collection`。[レッスン03](../lessons/03_collection/README.md)で所属を移す。 |
 | **Outliner（アウトライナー）** | Scene の Object やデータの関係を一覧で見る画面。表示モードによって見えるものが変わる。 | スクリーンショットの右上。`Blender File` 表示ならデータブロック側からも確認できる。 |
 | **3D Viewport（3Dビューポート）** | モデルを見て、選択・移動・編集するメインの3D画面。 | 2つの立方体が見える領域。 |
 | **Properties Editor（プロパティエディター）** | 選んだタブに応じて Scene、Object、Mesh、Material などの設定を表示する画面。 | スクリーンショット右下は Scene 設定のタブ。Scene の切り替え欄とは別。 |

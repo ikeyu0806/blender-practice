@@ -4,6 +4,7 @@
 |---|---|---|
 | [01](01_shared_mesh/README.md) | 共有 Mesh | 実装済み |
 | [02](02_parent_transform/README.md) | Transform と親子 | 実装済み |
+| [03](03_collection/README.md) | Collection の所属 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
@@ -15,6 +16,9 @@ lessons/
     README.md     # 目的、解説、実行、観察、実験、よくある疑問
     lesson.py     # コメント付きの実行可能な教材
   02_parent_transform/
+    README.md
+    lesson.py
+  03_collection/
     README.md
     lesson.py
 ```

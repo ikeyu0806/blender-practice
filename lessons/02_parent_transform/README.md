@@ -72,4 +72,4 @@ GUI で `Ctrl+P` を使って親子付けすると、「変形を維持」や Pa
 | Parent の下に見えるのは Collection の階層？ | 違う。親子の階層で、親の Transform が子に伝わる。 |
 | Mesh が共有だから子も一緒に動く？ | 違う。位置を決めるのは各 Object とその親。Mesh 共有は形状の共有。 |
 
-次は [ロードマップの03 Collection](../../docs/plan/README.md)。同じ Object の所属 Collection だけを変え、親子の変形とは別の仕組みだと確認する。
+次は [03 Collection](../03_collection/README.md)。同じ Object の所属 Collection だけを変え、親子の変形とは別の仕組みだと確認する。
