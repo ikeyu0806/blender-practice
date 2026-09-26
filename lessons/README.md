@@ -3,6 +3,7 @@
 | 番号 | テーマ | 状態 |
 |---|---|---|
 | [01](01_shared_mesh/README.md) | 共有 Mesh | 実装済み |
+| [02](02_parent_transform/README.md) | Transform と親子 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
@@ -13,6 +14,9 @@ lessons/
   01_shared_mesh/
     README.md     # 目的、解説、実行、観察、実験、よくある疑問
     lesson.py     # コメント付きの実行可能な教材
+  02_parent_transform/
+    README.md
+    lesson.py
 ```
 
 新しいレッスンは `NN_short_topic/` のように番号付きフォルダを作り、少なくとも `README.md` と `lesson.py` を一緒に追加します。生成物は `output/` に保存し、Git には含めません。画像・入力ファイルが必要な回は、その用途と入手・作成方法を README に書きます。

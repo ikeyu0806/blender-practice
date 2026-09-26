@@ -94,4 +94,4 @@ Scene を画面上で選ぶ場所と Outliner・Properties の違いは、[Scene
 
 **Q. Unity の例えを知らないと理解できない？** 必要ない。この回では「Object = 置き場所を持つもの」「Mesh = 立方体の形のデータ」を区別できればよい。Unity に持ち込む方法は、Blender 内で複数の部品から小作品を作れるようになってから学ぶ。今後の連携の位置づけは [補助ドキュメント](../../docs/notes/blender-unity-import.md) に記録した。
 
-次は [ロードマップ](../../docs/plan/README.md) の **02 Transform と親子**。共有した形状と各 Object の位置を区別できたら、親子による座標の変化へ進む。
+次は [02 Transform と親子](../02_parent_transform/README.md)。共有した形状と各 Object の位置を区別できたら、親子による座標の変化へ進む。
