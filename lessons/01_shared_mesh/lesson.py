@@ -2,8 +2,7 @@
 
 実行方法と観察課題は同じフォルダの README.md を参照する。
 このファイルを読むときは「データを作る → シーンにつなぐ → 関係を調べる」
-という順番に注目する。Unity なら1つの Mesh アセットを2つの
-GameObject が参照する状態に近い。
+という順番に注目する。まず Blender の Object と Mesh の違いを理解する。
 """
 
 from pathlib import Path

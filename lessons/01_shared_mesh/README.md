@@ -8,7 +8,7 @@ Blender の「見えている物体」と「形状データ」を分けて説明
 - 2つの Object は同じ Mesh を参照できる。片方の Object の位置を変えても、もう片方の位置は変わらない。
 - `mesh.users == 2` と `cube_a.data is cube_b.data` は、共有の状態を別の角度から確認している。
 
-前提知識は Python の変数と関数だけ。Unity 経験があれば「同じ Mesh アセットを参照する2つの GameObject」を想像すると近い。
+前提知識は Python の変数と関数だけ。まず Blender の画面と用語だけで理解できるようにする。
 
 ## 実行
 
@@ -35,6 +35,19 @@ Scene
     └── Cube.B ──┴── SharedCube (Mesh は1つ)
 ```
 
+## Blender の画面とスクリプトを対応させる
+
+| 画面で見えるもの | スクリプトで作るもの | 意味 |
+|---|---|---|
+| 左の立方体と Outliner の `Cube.A` | `cube_a = bpy.data.objects.new("Cube.A", mesh)` | 形状を表示する1つ目の Object。位置は初期値の `(0, 0, 0)`。 |
+| 右の立方体と Outliner の `Cube.B` | `cube_b = bpy.data.objects.new("Cube.B", mesh)` と `cube_b.location = (2, 0, 0)` | 2つ目の Object。同じ形状を参照し、X 方向に2だけ移動。 |
+| 各 Object の下に見える緑色の `SharedCube` | `mesh = bpy.data.meshes.new("SharedCube")` と、両 Object に渡した同じ `mesh` | Outliner に名前が2回表示されても、Mesh データは1つ。 |
+| 立方体がどちらも画面に見えること | `scene.collection.objects.link(...)` の2行 | 作成した Object をシーンの Collection に入れた結果。 |
+
+画面左の立方体に重なる赤白の照準は **3Dカーソル**。このスクリプトが作った3つ目の物体ではなく、初期位置にある操作用の目印。右下に **Scene** の設定が表示されていても、現在見ているプロパティの種類を示すだけで、Mesh の共有数を表してはいない。
+
+「形は同じ、置き場所は別」を確かめるには、2つの立方体の位置を見比べる。Mesh の共有を確かめるには、Outliner の名前だけでなく、実行ログの `users=2` と `same mesh: True` も見る。
+
 `bpy.data.meshes.new()` は Mesh データブロックを作る。`bmesh` で立方体の頂点・辺・面を組み立て、`bm.to_mesh(mesh)` でその内容を書き込む。この時点では Object もシーン内の表示もない。
 
 `bpy.data.objects.new(name, mesh)` は Mesh を参照する Object を作る。ここで2回とも**同じ `mesh` 変数**を渡している。Object はそれぞれ Transform を持つため、`Cube.B.location` だけを変更できる。Mesh の形状を変更すれば両方の見た目に反映される。
@@ -60,5 +73,11 @@ Object を作っただけではシーンに現れない。`scene.collection.obje
 | `location` を変えると共有 Mesh も移動する？ | いいえ。`location` は Object 側の Transform。 |
 | Collection に link したら Mesh が複製される？ | いいえ。Collection は Object の所属を決める。 |
 | `users` は画面に見える個数？ | いいえ。データブロックへの参照数。今回の構成では Object の数と一致する。 |
+
+## 理解メモ
+
+**Q. Outliner では `SharedCube` が2回表示されるのに、Mesh は本当に1つ？** 2回表示されるのは、各 Object の「参照先」をそれぞれ見せているため。同じ名前の別 Mesh が2つあるという意味ではない。`cube_a.data is cube_b.data` が `True` なので、同じデータブロックを指している。Outliner を **Blender File** 表示に切り替えると、Mesh データブロック側からも確認できる。
+
+**Q. Unity の例えを知らないと理解できない？** 必要ない。この回では「Object = 置き場所を持つもの」「Mesh = 立方体の形のデータ」を区別できればよい。Unity に持ち込む方法は、Blender 内で複数の部品から小作品を作れるようになってから学ぶ。今後の連携の位置づけは [補助ドキュメント](../../docs/notes/blender-unity-import.md) に記録した。
 
 次は [ロードマップ](../../docs/plan/README.md) の **02 Transform と親子**。共有した形状と各 Object の位置を区別できたら、親子による座標の変化へ進む。
