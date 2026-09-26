@@ -8,7 +8,7 @@ Blender の「見えている物体」と「形状データ」を分けて説明
 - 2つの Object は同じ Mesh を参照できる。片方の Object の位置を変えても、もう片方の位置は変わらない。
 - `mesh.users == 2` と `cube_a.data is cube_b.data` は、共有の状態を別の角度から確認している。
 
-前提知識は Python の変数と関数だけ。まず Blender の画面と用語だけで理解できるようにする。
+前提知識は Python の変数と関数だけ。まず Blender の画面と用語だけで理解できるようにする。言葉に迷ったら [Blender 用語集](../../docs/glossary.md) を参照する。
 
 ## 実行
 
