@@ -4,11 +4,14 @@
 
 **Scene を選ぶ・新しく作る場所は、Blender 画面上部の右側にある `Scene` 欄**。レッスン01の画面では、`ViewLayer` 欄の左に表示されている。`Scene` の名前が表示された欄を開くと、現在の `.blend` にある Scene を選べる。新しい Scene を作る操作もこの欄から行う。[Blender Manual: Scene](https://docs.blender.org/manual/en/5.0/scene_layout/scene/introduction.html)
 
+**この欄は保存済みファイルの一覧ではない。** 各 `.blend` ファイルは独自の Scene を持つ。画面タイトルが `Untitled` のままなら、`output/01_shared_mesh.blend` を開いた状態ではない。保存したレッスンの結果を見るには **File → Open...** でその `.blend` ファイルを開く。Scene 欄はファイルを開いた後、そのファイルの中の Scene を切り替えるために使う。
+
 ## 似た表示との違い
 
 | 画面の場所 | 役割 |
 |---|---|
 | **最上部右側の `Scene` 欄** | 現在使う Scene を選ぶ・作る。複数 Scene があるときの切り替え場所。 |
+| **File → Open...** | 別の `.blend` ファイルを開く。レッスンの保存結果を見るときはこちら。 |
 | **右上の Outliner にある `Scene Collection`** | 現在の Scene に所属する Collection と Object を見る。Scene 自体の切り替え欄ではない。 |
 | **右下の Properties の Scene タブ** | 現在の Scene のカメラ、単位、重力などの設定を見る・変える。Scene の一覧ではない。[Blender Manual: Scene Properties](https://docs.blender.org/manual/en/latest/scene_layout/scene/properties.html) |
 | **上部の `ViewLayer` 欄** | 現在の Scene の View Layer を選ぶ。Scene とは別の単位。 |

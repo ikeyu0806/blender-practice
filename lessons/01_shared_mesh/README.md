@@ -28,6 +28,8 @@ Blender の「見えている物体」と「形状データ」を分けて説明
 
 `--background` は Blender の画面を出さないモード。スクリプトを実行して `.blend` を保存した後、Blender が終了し、ターミナルも入力待ちに戻る。保存した結果を後で画面で見たい場合は `output/01_shared_mesh.blend` を Blender で開く。
 
+すでに開いている別の Blender ウィンドウには、保存結果が自動で現れるわけではない。結果を開くには **File → Open...** から、このプロジェクトの `output/01_shared_mesh.blend` を選ぶ。今の作業を残したい場合は、開く前に保存しておく。タイトルバーが `Untitled` で、標準の Cube・Camera・Light が見えるなら、まだ別の初期ファイルを見ている可能性が高い。
+
 Blender 内の Text Editor からも、ファイルを開いて **Run Script** で実行できる。スクリプトは最初に現在のシーンを空にする。作業中の `.blend` がある場合は先に保存すること。成功すると `output/01_shared_mesh.blend` を生成する。`output/` は Git 管理しない。
 
 ## 何が作られるか
@@ -81,6 +83,8 @@ Scene を画面上で選ぶ場所と Outliner・Properties の違いは、[Scene
 | `users` は画面に見える個数？ | いいえ。データブロックへの参照数。今回の構成では Object の数と一致する。 |
 
 ## 理解メモ
+
+**Q. 保存したはずなのに、Scene の一覧に立方体2つのシーンがない？** 上部の Scene 欄は、**今開いている `.blend` ファイル内**の Scene だけを表示する。保存済みの全ファイルを探す欄ではない。レッスンのスクリプトは `output/01_shared_mesh.blend` に保存するので、別の Blender ウィンドウや `Untitled` の初期画面を見ている場合は、上の **File → Open...** でそのファイルを開く。開いた後、Outliner に `Cube.A` と `Cube.B` が見えれば正しい結果。
 
 **Q. `bpy` と `bmesh` は Python の標準ライブラリ？** いいえ。どちらも Blender が提供する Python モジュール。`bpy` は Scene や Object など Blender のデータ・操作にアクセスし、`bmesh` は Mesh の頂点・辺・面を組み立てたり編集したりする。対して `from pathlib import Path` の `pathlib` は Python 標準ライブラリ。このため、レッスンは通常の `python3 lessons/01_shared_mesh/lesson.py` ではなく、上記の **Blender の実行ファイルから `--python`** で動かす。レッスンでは `bmesh` で立方体の形を作り、`bpy` でその Mesh を2つの Object に割り当てている。
 
