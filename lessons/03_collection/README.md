@@ -73,6 +73,12 @@ Outliner の **View Layer** 表示では、親子が折り畳み表示される�
 | Collection は Object を動かすための親？ | 違う。位置を伝えるのは Object の親子。Collection は整理と表示の単位。 |
 | `link` だけで元の Collection から移動する？ | 移動しない。元から外すには `unlink` が必要。 |
 
+## 理解メモ
+
+**Q. `make_parent_and_cube()` は、できた Cube に親子関係も付けている？** はい。この関数は **親用の Empty Object と、子用の Cube Object を1つずつ新規作成**する。`bpy.data.objects.new(f"Cube.{label}", mesh)` で Cube Object を作り、`collection.objects.link(child)` で指定の Collection に所属させる。その後の `child.parent = parent` で、Cube Object が親 Empty を参照するように設定する。`child.location = (1, 0, 0)` は、その親を基準にした子の位置を入れる。最後の `return parent, child` は作った2つの Object を呼び出し元へ返す。
+
+たとえば `make_parent_and_cube("B", 2.0, mesh, scene, right)` なら、`Parent.B` の X は `2`、`Cube.B` のローカル X は `1`、結果のワールド X は `3`。`Cube.B` は最初 `Props.Right` に所属する。`mesh` は Cube の**形状データ**、`parent` は Cube の**親 Object**、`collection` は Cube の**所属先**で、それぞれ別の参照である。後で `Cube.B` を `Props.Left` に移しても、`child.parent` は `Parent.B` のまま。
+
 ## 完了条件と次へ
 
 ログで `Cube.B` の `collections` だけが変わったことを指し示し、なぜ親と位置が変わらなかったか説明できれば完了。次は [04 木箱の組み立て](../../docs/plan/README.md)。部品を Collection で整理しつつ、地面に置きやすい Object の原点を考える。
