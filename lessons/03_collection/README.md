@@ -2,7 +2,7 @@
 
 ## このレッスンの目標
 
-[01 共有 Mesh](../01_shared_mesh/README.md)では Object と形状、[02 Transform と親子](../02_parent_transform/README.md)では親から受ける位置の影響を見た。今回は **Collection は Object を整理する入れ物**だと確かめる。背景の小作品では「木箱」「岩」「照明」などを Collection ごとにまとめられる。
+[01 共有 Mesh](../01_shared_mesh/README.md)では Object と形状、[02 Transform と親子](../02_parent_transform/README.md)では親から受ける位置の影響を見た。今回は **Collection は Object を整理する入れ物**だと確かめる。背景の小作品では「木箱」「岩」「照明」などを Collection ごとにまとめ、種類ごとの表示や選択を管理できる。
 
 実行前に予測する: `Cube.B` を `Props.Right` から `Props.Left` へ移したら、`Cube.B` の親 `Parent.B` とワールド X=3 はどうなるだろう？
 
@@ -78,6 +78,19 @@ Outliner の **View Layer** 表示では、親子が折り畳み表示される�
 **Q. `make_parent_and_cube()` は、できた Cube に親子関係も付けている？** はい。この関数は **親用の Empty Object と、子用の Cube Object を1つずつ新規作成**する。`bpy.data.objects.new(f"Cube.{label}", mesh)` で Cube Object を作り、`collection.objects.link(child)` で指定の Collection に所属させる。その後の `child.parent = parent` で、Cube Object が親 Empty を参照するように設定する。`child.location = (1, 0, 0)` は、その親を基準にした子の位置を入れる。最後の `return parent, child` は作った2つの Object を呼び出し元へ返す。
 
 たとえば `make_parent_and_cube("B", 2.0, mesh, scene, right)` なら、`Parent.B` の X は `2`、`Cube.B` のローカル X は `1`、結果のワールド X は `3`。`Cube.B` は最初 `Props.Right` に所属する。`mesh` は Cube の**形状データ**、`parent` は Cube の**親 Object**、`collection` は Cube の**所属先**で、それぞれ別の参照である。後で `Cube.B` を `Props.Left` に移しても、`child.parent` は `Parent.B` のまま。
+
+**Q. Collection に入れた Object の Location をまとめて操作できる？** Collection 自体には Object のような `location` がない。`Props.Left` にある2つの Cube をCollectionの所属設定だけでまとめて移動することはできず、親にした Empty を動かすか、対象の Object を複数選択して一緒に移動する。複数選択して `G` で移動すると、それぞれの Object の位置が変わる。親 Empty を動かすと、子の相対配置を保ったまま全体を移動・回転・拡大できる。今回の `Cube.A` と `Cube.B` は**別々の親**を持つので、`Parent.A` だけを動かせば `Cube.A` だけが動く。
+
+背景を作るときの使い分けを、木箱の例で考える。
+
+| したいこと | 使う仕組み | 例 |
+|---|---|---|
+| 作業中に種類ごとに表示・非表示を切り替え、誤選択も避ける | Collection | `Crates`、`Rocks`、`Lighting` を分け、岩を作る間は木箱や照明を隠す。必要なら選択も制限する。 |
+| 木箱を構成する板と金具を、形を崩さず1個の木箱として動かす | 親 Empty | `Crate.Root` を板と金具の親にし、この Empty の Transform を動かす。 |
+| 今選んだ複数の岩を同じ距離だけ動かす | 複数 Object の選択 | 対象を選択して Object Mode で `G`。動くのは選択された Object。 |
+| 同じ木箱セットを何度も配置する | Collection Instance | 木箱部品を入れた Collection のインスタンスを置き、そのインスタンス Object を動かす。これは後の反復配置の回で詳しく扱う。 |
+
+つまり `Crates` Collection は「木箱を見つけて管理するためのまとまり」、`Crate.Root` Empty は「木箱を動かすための基準点」として併用できる。1つの Object が複数の Collection に所属する場合、片方のCollectionの表示設定だけでは隠れないこともあるため、どこに所属しているか確認する。[Blender Manual: Collections](https://docs.blender.org/manual/en/5.2/scene_layout/collections/collections.html) は整理・表示・レンダー管理を、[Parenting Objects](https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/parent.html) は親から子への Transform の伝達を説明している。
 
 ## 完了条件と次へ
 
