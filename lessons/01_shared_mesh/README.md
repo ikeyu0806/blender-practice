@@ -88,6 +88,8 @@ Scene を画面上で選ぶ場所と Outliner・Properties の違いは、[Scene
 
 **Q. `bpy` と `bmesh` は Python の標準ライブラリ？** いいえ。どちらも Blender が提供する Python モジュール。`bpy` は Scene や Object など Blender のデータ・操作にアクセスし、`bmesh` は Mesh の頂点・辺・面を組み立てたり編集したりする。対して `from pathlib import Path` の `pathlib` は Python 標準ライブラリ。このため、レッスンは通常の `python3 lessons/01_shared_mesh/lesson.py` ではなく、上記の **Blender の実行ファイルから `--python`** で動かす。レッスンでは `bmesh` で立方体の形を作り、`bpy` でその Mesh を2つの Object に割り当てている。
 
+**Q. `bpy` は Blender Python の略？** 「Blender Python」と覚えてよい。ただし、確認できた公式資料では `bpy` を **Blender が Python に提供するモジュール名**として説明しており、名前の正式な語源までは明記していない。[Blender Python API の概要](https://docs.blender.org/api/5.2/info_overview.html) にある `import bpy` は、そのモジュールをスクリプトで使えるようにする記述。
+
 **Q. `--python` で実行したターミナルが終わらないのは失敗？** 画面付き起動なら正常。スクリプトは先に終わり、その後は Blender アプリが画面を表示し続けるため、ターミナルがアプリの終了を待っている。`saved:` が表示されたら保存は完了。生成して終了したい場合は、上の `--background --python` コマンドを使う。
 
 **Q. Outliner では `SharedCube` が2回表示されるのに、Mesh は本当に1つ？** 2回表示されるのは、各 Object の「参照先」をそれぞれ見せているため。同じ名前の別 Mesh が2つあるという意味ではない。`cube_a.data is cube_b.data` が `True` なので、同じデータブロックを指している。Outliner を **Blender File** 表示に切り替えると、Mesh データブロック側からも確認できる。

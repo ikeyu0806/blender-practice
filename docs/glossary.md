@@ -102,7 +102,7 @@ Scene（作業する場面）
 | 用語 | 意味 | レッスンでの例 |
 |---|---|---|
 | **`pathlib`** | Python 標準ライブラリ。ファイルやフォルダのパスを扱う。 | `from pathlib import Path`。 |
-| **`bpy`** | Blender が提供する Python モジュール。Scene や Object などのデータ・操作へアクセスする。 | `import bpy`。 |
+| **`bpy`** | Blender が提供する Python モジュールの名前。「Blender Python」と覚えると分かりやすい。Scene や Object などのデータ・操作へアクセスする。 | `import bpy`。 |
 | **`bpy.data`（データ API）** | `.blend` 内の Scene、Object、Mesh などへ直接アクセスする入口。 | `bpy.data.meshes.new("SharedCube")`。 |
 | **`bpy.ops`（オペレーター）** | Blender の操作を Python から呼ぶ入口。選択状態やモードなどの Context を必要とする操作がある。 | `bpy.ops.wm.save_as_mainfile(...)`。 |
 | **Context（コンテキスト）** | 今どの Scene・Object・エリア・モードなどで操作しているかという状態。 | UI では動く操作が背景実行で失敗するときに確認する。 |
