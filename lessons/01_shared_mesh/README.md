@@ -80,6 +80,8 @@ Object を作っただけではシーンに現れない。`scene.collection.obje
 
 ## 理解メモ
 
+**Q. `bpy` と `bmesh` は Python の標準ライブラリ？** いいえ。どちらも Blender が提供する Python モジュール。`bpy` は Scene や Object など Blender のデータ・操作にアクセスし、`bmesh` は Mesh の頂点・辺・面を組み立てたり編集したりする。対して `from pathlib import Path` の `pathlib` は Python 標準ライブラリ。このため、レッスンは通常の `python3 lessons/01_shared_mesh/lesson.py` ではなく、上記の **Blender の実行ファイルから `--python`** で動かす。レッスンでは `bmesh` で立方体の形を作り、`bpy` でその Mesh を2つの Object に割り当てている。
+
 **Q. `--python` で実行したターミナルが終わらないのは失敗？** 画面付き起動なら正常。スクリプトは先に終わり、その後は Blender アプリが画面を表示し続けるため、ターミナルがアプリの終了を待っている。`saved:` が表示されたら保存は完了。画面を観察してから Blender を終了する。画面不要なら上の `--background` コマンドを使う。
 
 **Q. Outliner では `SharedCube` が2回表示されるのに、Mesh は本当に1つ？** 2回表示されるのは、各 Object の「参照先」をそれぞれ見せているため。同じ名前の別 Mesh が2つあるという意味ではない。`cube_a.data is cube_b.data` が `True` なので、同じデータブロックを指している。Outliner を **Blender File** 表示に切り替えると、Mesh データブロック側からも確認できる。

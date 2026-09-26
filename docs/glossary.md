@@ -97,13 +97,16 @@ Scene（作業する場面）
 
 ## Python とファイルのやり取り
 
+`bpy` と `bmesh` は Python 標準ライブラリではなく Blender が提供する。レッスンを通常の `python3` で直接動かすと、通常はこれらを読み込めない。Blender の `--python` または Text Editor の **Run Script** から実行する。`pathlib` は標準ライブラリで、Blender 内の Python からも利用できる。[Blender Python API の概要](https://docs.blender.org/api/5.2/info_overview.html)・[Python の `pathlib`](https://docs.python.org/3/library/pathlib.html)
+
 | 用語 | 意味 | レッスンでの例 |
 |---|---|---|
-| **`bpy`** | Blender の Python API にアクセスするモジュール。 | `import bpy`。 |
+| **`pathlib`** | Python 標準ライブラリ。ファイルやフォルダのパスを扱う。 | `from pathlib import Path`。 |
+| **`bpy`** | Blender が提供する Python モジュール。Scene や Object などのデータ・操作へアクセスする。 | `import bpy`。 |
 | **`bpy.data`（データ API）** | `.blend` 内の Scene、Object、Mesh などへ直接アクセスする入口。 | `bpy.data.meshes.new("SharedCube")`。 |
 | **`bpy.ops`（オペレーター）** | Blender の操作を Python から呼ぶ入口。選択状態やモードなどの Context を必要とする操作がある。 | `bpy.ops.wm.save_as_mainfile(...)`。 |
 | **Context（コンテキスト）** | 今どの Scene・Object・エリア・モードなどで操作しているかという状態。 | UI では動く操作が背景実行で失敗するときに確認する。 |
-| **`bmesh`** | Mesh の頂点・辺・面を Python で組み立てたり編集したりする仕組み。 | `bmesh.ops.create_cube(...)`。 |
+| **`bmesh`** | Blender が提供する Python モジュール。Mesh の頂点・辺・面を組み立てたり編集したりする。 | `bmesh.ops.create_cube(...)`。 |
 | **Link（リンク）** | データ同士の参照を結ぶこと。対象によって意味が異なる。 | `scene.collection.objects.link(cube_a)` は Object を Collection に所属させる。Mesh を複製する操作ではない。 |
 | **Export / Import（書き出し／読み込み）** | 別形式へ変換して渡す／別形式のデータを取り込むこと。`.blend` を保存する操作とは区別する。 | 将来の Unity 連携では FBX を使う予定。 |
 

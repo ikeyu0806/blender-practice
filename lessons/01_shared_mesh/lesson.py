@@ -5,8 +5,11 @@
 という順番に注目する。まず Blender の Object と Mesh の違いを理解する。
 """
 
+# pathlib は Python 標準ライブラリ。ファイルの保存先を扱う。
 from pathlib import Path
 
+# bpy と bmesh は Python 標準ライブラリではなく、Blender が提供する。
+# このスクリプトは通常の python3 ではなく Blender から実行する。
 import bmesh
 import bpy
 
