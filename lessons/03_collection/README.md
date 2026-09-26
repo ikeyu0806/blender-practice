@@ -94,4 +94,4 @@ Outliner の **View Layer** 表示では、親子が折り畳み表示される�
 
 ## 完了条件と次へ
 
-ログで `Cube.B` の `collections` だけが変わったことを指し示し、なぜ親と位置が変わらなかったか説明できれば完了。次は [04 木箱の組み立て](../../docs/plan/README.md)。部品を Collection で整理しつつ、地面に置きやすい Object の原点を考える。
+ログで `Cube.B` の `collections` だけが変わったことを指し示し、なぜ親と位置が変わらなかったか説明できれば完了。次は [04 木箱の組み立て](../04_crate_origin/README.md)。板を1つの Mesh に組み立て、地面に置きやすい Object の原点を考える。
