@@ -18,11 +18,15 @@ Blender の「見えている物体」と「形状データ」を分けて説明
 /Applications/Blender.app/Contents/MacOS/Blender --python lessons/01_shared_mesh/lesson.py
 ```
 
+このコマンドは **画面付きで Blender アプリを起動**する。`--python` でスクリプトを実行した後も、立方体を観察できるよう Blender は開いたままになる。その間、コマンドを実行したターミナルは Blender の終了を待つ。ログに `saved: .../output/01_shared_mesh.blend` が出て、画面に立方体が2つ見えれば、スクリプトの処理は完了している。観察を終えて Blender を通常どおり終了すると、ターミナルの入力待ちに戻る。
+
 画面なしで出力と検証だけ行う場合:
 
 ```bash
 /Applications/Blender.app/Contents/MacOS/Blender --background --python lessons/01_shared_mesh/lesson.py
 ```
+
+`--background` は Blender の画面を出さないモード。スクリプトを実行して `.blend` を保存した後、Blender が終了し、ターミナルも入力待ちに戻る。保存した結果を後で画面で見たい場合は `output/01_shared_mesh.blend` を Blender で開く。
 
 Blender 内の Text Editor からも、ファイルを開いて **Run Script** で実行できる。スクリプトは最初に現在のシーンを空にする。作業中の `.blend` がある場合は先に保存すること。成功すると `output/01_shared_mesh.blend` を生成する。`output/` は Git 管理しない。
 
@@ -75,6 +79,8 @@ Object を作っただけではシーンに現れない。`scene.collection.obje
 | `users` は画面に見える個数？ | いいえ。データブロックへの参照数。今回の構成では Object の数と一致する。 |
 
 ## 理解メモ
+
+**Q. `--python` で実行したターミナルが終わらないのは失敗？** 画面付き起動なら正常。スクリプトは先に終わり、その後は Blender アプリが画面を表示し続けるため、ターミナルがアプリの終了を待っている。`saved:` が表示されたら保存は完了。画面を観察してから Blender を終了する。画面不要なら上の `--background` コマンドを使う。
 
 **Q. Outliner では `SharedCube` が2回表示されるのに、Mesh は本当に1つ？** 2回表示されるのは、各 Object の「参照先」をそれぞれ見せているため。同じ名前の別 Mesh が2つあるという意味ではない。`cube_a.data is cube_b.data` が `True` なので、同じデータブロックを指している。Outliner を **Blender File** 表示に切り替えると、Mesh データブロック側からも確認できる。
 
