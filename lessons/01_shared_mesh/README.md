@@ -58,6 +58,8 @@ Scene
 
 Object を作っただけではシーンに現れない。`scene.collection.objects.link()` でシーンの Collection に所属させて初めて表示対象になる。Collection の所属と Mesh の参照は別の関係である。
 
+Scene を画面上で選ぶ場所と Outliner・Properties の違いは、[Scene の管理場所](../../docs/notes/scene-ui.md) を参照する。
+
 最後に共有を検査し、`.blend` に保存する。表示される `vertices=8` は立方体の Mesh の頂点数で、Object が2つあっても Mesh の頂点数は倍にならない。
 
 ## 確認してみる

@@ -26,11 +26,11 @@ Scene（作業する場面）
 | 用語 | 意味 | どこで見る・使うか |
 |---|---|---|
 | **`.blend` ファイル** | Blender の作業データを保存するファイル。Object や Mesh、Scene などを含む。 | `output/01_shared_mesh.blend`。 |
-| **Scene（シーン）** | Object の配置、カメラ、レンダー設定などを含む作業のまとまり。1つの `.blend` に複数の Scene を持てる。 | Outliner の一番上付近の `Scene`。 |
+| **Scene（シーン）** | Object の配置、カメラ、レンダー設定などを含む作業のまとまり。1つの `.blend` に複数の Scene を持てる。 | 画面最上部右側の `Scene` 欄で選ぶ。[画面での管理方法](notes/scene-ui.md)。 |
 | **Collection（コレクション）** | Object をまとめ、表示や整理を行う入れ物。所属させても親子の位置関係は生まれない。 | Outliner の `Scene Collection`。 |
 | **Outliner（アウトライナー）** | Scene の Object やデータの関係を一覧で見る画面。表示モードによって見えるものが変わる。 | スクリーンショットの右上。`Blender File` 表示ならデータブロック側からも確認できる。 |
 | **3D Viewport（3Dビューポート）** | モデルを見て、選択・移動・編集するメインの3D画面。 | 2つの立方体が見える領域。 |
-| **Properties Editor（プロパティエディター）** | 選んだタブに応じて Scene、Object、Mesh、Material などの設定を表示する画面。 | スクリーンショット右下は Scene 設定のタブ。 |
+| **Properties Editor（プロパティエディター）** | 選んだタブに応じて Scene、Object、Mesh、Material などの設定を表示する画面。 | スクリーンショット右下は Scene 設定のタブ。Scene の切り替え欄とは別。 |
 | **Workspace（ワークスペース）** | Modeling、Shading、Scripting など、作業に合わせた画面配置。データそのものとは別。 | 画面上部のタブ。 |
 | **Object Mode（オブジェクトモード）** | Object 全体を選択・変形するモード。 | 立方体全体を移動する。 |
 | **Edit Mode（編集モード）** | 選んだ Object の Mesh など、内部の形状を編集するモード。 | 頂点を動かして立方体の形を変える。共有 Mesh なら両 Object の見た目に反映される。 |
