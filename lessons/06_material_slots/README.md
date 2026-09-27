@@ -46,6 +46,8 @@ MaterialSlotsLesson Collection
 
 Rails風の比喩では、`Mesh has_many :material_slots`、`MaterialSlot belongs_to :material`に近い。Materialは別のデータブロックであり、別Meshのslotからも参照できるため、Meshに所有されて一緒に消える子データという意味ではない。
 
+Collection、Object、Mesh、Faceまで含めた関係は、[Rails風ER図で理解するObject・Mesh・Face・Material Slot・Material](../../docs/notes/mesh-material-slots-er.md)で確認できる。
+
 ## Material Propertiesで2つのslotを見る
 
 1. `.blend`を開き、Outlinerで`Sample.MaterialSlots`を選ぶ。
