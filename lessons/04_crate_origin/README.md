@@ -120,12 +120,13 @@ Scene Collection
 2. Object Modeから始める場合は、Outlinerで緑の`CrateBoards`行ではなく、オレンジの三角が付いた`Crate.A`または`Crate.B`のObject行を選ぶ。すでにEdit Modeで頂点が見えている場合は、そのままでよい。
 3. Object Modeの場合は、3Dビューポート左上のModeメニューから **Edit Mode** に入る。
 4. 3Dビューポート上部の **Select → All** で、40頂点すべてを選ぶ。
-5. **Mesh → Transform → Scale** を選び、`1.2`と入力して確定する。共有Mesh全体が1.2倍になり、もう一方の木箱も同時に大きくなる。
-6. 実験を戻す場合は、画面上部の **Edit → Undo** を使う。
+5. **Mesh → Transform → Scale** を選ぶ。この直後は変形操作の途中なので、マウス移動やトラックパッドのスクロールで大きさが変わる。これはプレビューであり正常。
+6. 入力欄を探したり画面をクリックしたりせず、マウスポインターを3Dビューポートに置いたまま、キーボードで `1`、`.`、`2`、`Return` の順に押す。入力中の`1.2`は3Dビューポート下部に表示され、マウスで変わった途中の値を上書きする。日本語入力が反応する場合は、macOSの入力ソースを一時的にABCへ切り替える。
+7. 共有Mesh全体が1.2倍になり、もう一方の木箱も同時に大きくなる。途中で分からなくなったら`Esc`でScaleをキャンセルして手順5からやり直す。確定後に戻す場合は、画面上部の **Edit → Undo** を使う。
 
 比較として、Object Modeへ戻って片方のObjectだけを選び、右側の **Object Properties → Transform → Scale** を変更すると、そのObjectだけが変わる。これは共有Meshを編集したのではなく、そのObjectがMeshを表示するときの倍率を変更したため。
 
-[Blender Manual: Object ModeとEdit Mode](https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/transform/introduction.html)・[Blender Manual: MeshのMove、Rotate、Scale](https://docs.blender.org/manual/en/5.2/modeling/meshes/editing/mesh/transform/basic.html)
+[Blender Manual: Object ModeとEdit Mode](https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/transform/introduction.html)・[Blender Manual: MeshのMove、Rotate、Scale](https://docs.blender.org/manual/en/5.2/modeling/meshes/editing/mesh/transform/basic.html)・[Blender Manual: 数値入力](https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/transform/control/numeric_input.html)
 
 ## 理解メモ：なぜ Object を Collection へ `link` する？
 
