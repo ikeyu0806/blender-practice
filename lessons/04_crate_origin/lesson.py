@@ -112,18 +112,22 @@ def world_bottom_z(mesh_object: bpy.types.Object) -> float:
 # ⑥ 頂点・面の数、接地、Mesh共有などが設計どおりか検査する。
 # ⑦ 完成した Scene を output/04_crate_origin.blend に保存する。
 def main() -> None:
-    # 再実行で同じシーンを作る。Text Editor から実行する場合は、現在の
-    # 未保存の作業が消えるので、先に別の .blend に保存する。
+    # ① Sceneを初期化し、2つのCollectionを作る。
+    # 再実行で同じSceneを作る。Text Editorから実行する場合は、現在の
+    # 未保存の作業が消えるので、先に別の.blendへ保存する。
     bpy.ops.wm.read_factory_settings(use_empty=True)
     lesson_scene = bpy.context.scene
     crates_collection = make_collection("Crates", lesson_scene)
     environment_collection = make_collection("Environment", lesson_scene)
 
+    # ② 地面のMeshとObjectを作り、Environment Collectionへ所属させる。
     # objects.new() は Object データブロックを作るだけで、まだ Scene には出ない。
     # 第2引数の Mesh を Object.data として参照させる。
     ground_object = bpy.data.objects.new("Ground", make_ground_mesh())
     # Collection へ link して、初めてこの Scene の構成要素として表示される。
     environment_collection.objects.link(ground_object)
+
+    # ③ 共有する木箱Meshと2つのObjectを作り、Crates Collectionへ所属させる。
     crate_mesh = make_crate_mesh()
 
     # objects.new(name, object_data) の第2引数に同じ crate_mesh を渡す。
@@ -137,6 +141,7 @@ def main() -> None:
     crates_collection.objects.link(crate_a_object)
     crates_collection.objects.link(crate_b_object)
 
+    # ④ 木箱ObjectごとにLocationを設定し、配置の計算を更新する。
     # Location は Mesh ではなく各 Object が持つ。そのため、同じ形を共有しても
     # Crate.A と Crate.B を別々の場所に置ける。
     crate_a_object.location = (-1.5, 0.0, 0.0)
@@ -145,6 +150,7 @@ def main() -> None:
     # 変更した配置を依存関係グラフへ反映し、matrix_world を最新にする。
     bpy.context.view_layer.update()
 
+    # ⑤ 原点、底面、Collection、地面の高さをログへ表示する。
     print("=== 04 crate origin ===")
     print(f"mesh local bottom={min(vertex.co.z for vertex in crate_mesh.vertices):.3f}")
     for crate_object in (crate_a_object, crate_b_object):
@@ -157,6 +163,7 @@ def main() -> None:
         f"ground top_z={max(vertex.co.z for vertex in ground_object.data.vertices):.3f}"
     )
 
+    # ⑥ 頂点・面の数、接地、Mesh共有などが設計どおりか検査する。
     # 原点と Mesh の底面が一致しているか、保存前に確かめる。
     if len(crate_mesh.vertices) != 40 or len(crate_mesh.polygons) != 30:
         raise RuntimeError("5枚の板（各8頂点・6面）が作られていない")
@@ -174,6 +181,7 @@ def main() -> None:
     ):
         raise RuntimeError("地面の上面が Z=0 にない")
 
+    # ⑦ 完成したSceneを.blendへ保存する。
     BLEND_PATH.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(BLEND_PATH))
     print(f"saved: {BLEND_PATH}")
