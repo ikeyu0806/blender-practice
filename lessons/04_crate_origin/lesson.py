@@ -103,6 +103,14 @@ def world_bottom_z(mesh_object: bpy.types.Object) -> float:
     )
 
 
+# main() の処理の流れ
+# ① Scene を初期化し、Crates と Environment の Collection を作る。
+# ② 地面の Mesh と Object を作り、Environment Collection に所属させる。
+# ③ 木箱の共有 Mesh と2つの Object を作り、Crates Collection に所属させる。
+# ④ 2つの木箱 Object に別々の Location を設定し、配置の計算を更新する。
+# ⑤ 原点、底面、Collection、地面の高さをログへ表示する。
+# ⑥ 頂点・面の数、接地、Mesh共有などが設計どおりか検査する。
+# ⑦ 完成した Scene を output/04_crate_origin.blend に保存する。
 def main() -> None:
     # 再実行で同じシーンを作る。Text Editor から実行する場合は、現在の
     # 未保存の作業が消えるので、先に別の .blend に保存する。
