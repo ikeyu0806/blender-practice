@@ -82,6 +82,34 @@ Object ── data ── Mesh ── material slot ── Material
 
 テクスチャ画像やUVはまだ使わない。まず1色と数値だけでMaterialの役割を分離して観察する。
 
+## 理解メモ：MeshからMaterialは`has_many`？
+
+Rails風に表すなら、`Mesh has_many :material_slots`はかなり近い。ただし、MeshがMaterialそのものを所有するのではなく、**順番付きのMaterial slotがMaterialデータブロックを参照する**。
+
+```text
+Mesh
+├── material_slots[0] ──参照──> Material.A
+└── material_slots[1] ──参照──> Material.B
+
+Meshの各Face
+└── material_index = 0 または 1
+    └── どのMaterial slotを使うかを選ぶ
+```
+
+関係をRails風に分解すると、次のイメージになる。
+
+- `Mesh has_many :material_slots`
+- `MaterialSlot belongs_to :material`
+- 1つのMaterialは複数のMeshのslotから再利用できる
+
+そのため、MeshとMaterial全体の関係は、slotを間に置いた**多対多に近い**。ただしこれは理解のためのたとえであり、Blender内部にRailsの関連があるわけではない。
+
+このレッスンの`sample_mesh.materials.append(sample_material)`は、MeshへMaterial slotを1つ追加し、そのslotからMaterialを参照させている。Faceは最初のslotを使うため、`material_index`は`0`になる。
+
+スクリーンショットの`Sample.MetallicHigh.Mesh`には、教材が作った`Material.MetallicHigh`に加えて、`Material`という2つ目のslotが増えている。下の一覧で`Material`を選択しても、**設定欄で表示するMaterialを切り替えただけ**で、Faceへの割り当ては自動では変わらない。教材のMetallic値を確認するには、一覧の`Material.MetallicHigh`を選ぶ。そこではMetallicが`1.0`、Roughnessが`0.45`になっている。
+
+教材を元の状態へ戻す場合は、追加した`Material`のslotを選んでMaterial slotの削除ボタンを押すか、レッスンのスクリプトを再実行して出力を作り直す。
+
 ## スクリプトの流れ
 
 1. Sceneを初期化し、`MaterialSamples` Collectionを作る。
@@ -112,6 +140,7 @@ Object ── data ── Mesh ── material slot ── Material
 | Solid表示で赤や青が見えないのは設定失敗？ | Material Previewへ切り替えて確認する。Solid表示はMaterialのシェーダー結果を観察する表示ではない。 |
 | Metallicを1にすれば必ず銀色になる？ | ならない。Base Colorが金属の反射色に影響する。この教材の金属サンプルは赤い金属として見える。 |
 | Roughnessが低いほど明るくなる？ | 単純な明るさではなく、主に反射が鋭くなる。環境や見る角度で明暗は変わる。 |
+| Material slotを選べば、そのMaterialがFaceへ割り当てられる？ | 選択だけでは設定欄の表示対象が変わる。複数slotを使い分ける場合は、Edit ModeでFaceを選び、使うslotを選んで**Assign**する。 |
 
 ## 完了条件と次へ
 
