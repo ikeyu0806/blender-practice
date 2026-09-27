@@ -13,6 +13,7 @@
 
 ## 文書一覧
 
+- [Blender Mac版：最初に迷わないための画面操作](blender-mac-controls.md)
 - [`lesson.py` と Blender の画面は同期する？](script-workflow.md)
 - [Blender の Scene は画面のどこで管理する？](scene-ui.md)
 - [Blender から Unity へ持ち込むのはいつ、どう学ぶか](blender-unity-import.md)
