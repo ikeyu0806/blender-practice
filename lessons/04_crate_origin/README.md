@@ -118,11 +118,11 @@ Crates Collection
 
 | コード | 作る・変更する関係 |
 |---|---|
-| `bpy.data.objects.new("Crate.A", crate_mesh)` | `Crate.A` Objectを作り、その `data` に `crate_mesh` を参照させる。 |
-| `crates.objects.link(crate_a)` | `crate_a` を `Crates` Collectionへ所属させる。 |
-| `crate_a.location = (...)` | `crate_a` Object自身の配置を変更する。Meshの頂点は変更しない。 |
+| `crate_a_object = bpy.data.objects.new("Crate.A", crate_mesh)` | `Crate.A` Objectを作り、その `data` に `crate_mesh` を参照させる。 |
+| `crates_collection.objects.link(crate_a_object)` | `crate_a_object` を `Crates` Collectionへ所属させる。 |
+| `crate_a_object.location = (...)` | `crate_a_object`自身の配置を変更する。Meshの頂点は変更しない。 |
 
-`bpy.data.objects.new()` は `.blend` 内に Object データブロックを作るだけで、どの Collection にも自動では所属させない。そのままでは現在の Scene の Outliner や3Dビューポートに現れないため、`crates.objects.link(crate_a)` が必要になる。
+`bpy.data.objects.new()` は `.blend` 内に Object データブロックを作るだけで、どの Collection にも自動では所属させない。そのままでは現在の Scene の Outliner や3Dビューポートに現れないため、`crates_collection.objects.link(crate_a_object)` が必要になる。
 
 この `link` は、`Crate.A` と `Crate.B` を互いにつないだり、親子にしたり、Meshを共有させたりする操作ではない。Mesh共有は、その前の `objects.new()` で両方に同じ `crate_mesh` を渡した時点で成立している。Locationは各Object側にあるため、形は共有したまま別々の位置へ置ける。
 
