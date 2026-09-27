@@ -178,4 +178,4 @@ polygon.material_index = material_index
 
 ## 完了条件と次へ
 
-Material Propertiesで2つのslotを確認し、Edit Modeの**Select**で各slotを使うFaceを見分け、`material_index`との対応を説明できれば完了。次はロードマップの **Modifierの評価** で、元のMeshと表示結果の違いを調べる。
+Material Propertiesで2つのslotを確認し、Edit Modeの**Select**で各slotを使うFaceを見分け、`material_index`との対応を説明できれば完了。次は [07 Modifierの評価](../07_modifier_evaluation/README.md) で、元のMeshと表示結果の違いを調べる。

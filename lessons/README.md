@@ -8,6 +8,7 @@
 | [04](04_crate_origin/README.md) | 木箱の組み立てと原点 | 実装済み |
 | [05](05_material_basics/README.md) | マテリアルの入口 | 実装済み |
 | [06](06_material_slots/README.md) | Material SlotとFaceの割り当て | 実装済み |
+| [07](07_modifier_evaluation/README.md) | Modifierの評価 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
@@ -31,6 +32,9 @@ lessons/
     README.md
     lesson.py
   06_material_slots/
+    README.md
+    lesson.py
+  07_modifier_evaluation/
     README.md
     lesson.py
 ```

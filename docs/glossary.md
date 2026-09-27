@@ -64,7 +64,7 @@ Scene（作業する場面）
 | **Extrude（押し出し）** | 選択した頂点・辺・面から新しい形状を伸ばす操作。 | 面を押し出して取っ手を作る。 |
 | **Bevel（ベベル）** | 角や辺に幅を付け、鋭い角を丸める操作・Modifier。 | 木箱の縁を少し丸める。 |
 | **Modifier（モディファイア）** | 元の形状を直接編集せず、表示・評価結果に加工を加える仕組み。必要に応じて適用できる。 | Bevel で角を丸める。 |
-| **Evaluated Mesh（評価後メッシュ）** | Modifier などを計算した後に得られる形状。元の Mesh とは頂点数が違うことがある。 | Bevel の前後を比較する。 |
+| **Evaluated Mesh（評価後メッシュ）** | Modifier などを計算した後に得られる形状。元の Mesh とは頂点数が違うことがある。 | [レッスン07](../lessons/07_modifier_evaluation/README.md)でBevelの前後を比較する。 |
 | **Sculpt（スカルプト）** | 粘土を扱うようにブラシで形を作る方法。 | モンスターの筋肉や角の形を作る。 |
 | **Retopology（リトポロジー）** | 既存の形を参考に、扱いやすい辺・面の構成へ作り直すこと。 | 高密度に造形したモンスターを動かしやすい Mesh にする。 |
 | **Geometry Nodes（ジオメトリノード）** | ノードのつながりで形状の生成・加工を組み立てる仕組み。 | 背景の石を規則に従って繰り返し配置する。 |
@@ -108,6 +108,7 @@ Scene（作業する場面）
 | **`bpy.data`（データ API）** | `.blend` 内の Scene、Object、Mesh などへ直接アクセスする入口。 | `bpy.data.meshes.new("SharedCube")`。 |
 | **`bpy.ops`（オペレーター）** | Blender の操作を Python から呼ぶ入口。選択状態やモードなどの Context を必要とする操作がある。 | `bpy.ops.wm.save_as_mainfile(...)`。 |
 | **Context（コンテキスト）** | 今どの Scene・Object・エリア・モードなどで操作しているかという状態。 | UI では動く操作が背景実行で失敗するときに確認する。 |
+| **Dependency Graph（依存関係グラフ）** | Object、Modifierなどの依存関係を計算し、現在の評価結果を提供する仕組み。 | レッスン07で`evaluated_get()`を使い、Bevel計算後のObjectを読む。 |
 | **`bmesh`** | Blender が提供する Python モジュール。Mesh の頂点・辺・面を組み立てたり編集したりする。 | `bmesh.ops.create_cube(...)`。 |
 | **Link（リンク）** | データ同士の参照を結ぶこと。対象によって意味が異なる。 | `scene.collection.objects.link(cube_a)` は Object を Collection に所属させる。Mesh を複製する操作ではない。 |
 | **Export / Import（書き出し／読み込み）** | 別形式へ変換して渡す／別形式のデータを取り込むこと。`.blend` を保存する操作とは区別する。 | 将来の Unity 連携では FBX を使う予定。 |
