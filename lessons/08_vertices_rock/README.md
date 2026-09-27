@@ -84,6 +84,39 @@ MeshのFaceは厚みを持つ板ではなく、表と裏を持つ面。法線は
 
 この教材では、外側からFaceを見たときに頂点番号が反時計回りになるよう並べる。右の比較用Meshだけ、`reversed()`で`Upper.Front`の順番を逆転する。
 
+## Mac画面でFaceごとの情報を見る
+
+スクリーンショットはすでに **Edit Mode**だが、`Edit Mode`の右に並ぶ3つの選択アイコンでは、左端の **Vertex Select**が青くなっている。Faceを調べるときは、右端の塗りつぶされた四角形アイコン **Face Select**を普通にクリックする。`control`や`command`は押さなくてよい。
+
+また、右下に表示されている緑の三角形タブは **Object Data Properties**で、Mesh全体の設定を見る場所。Face 0、Face 1……という個別レコードの一覧は、ここには表示されない。Faceごとの情報は、3Dビューポートの **Viewport Overlays**へ表示する。
+
+1. 岩が小さい場合は、現在のように岩全体がオレンジ色の状態で **View → Frame Selected**を選び、画面へ大きく表示する。
+2. `Edit Mode`の右にある3アイコンのうち、右端の **Face Select**をクリックする。
+3. 上部の **Select → None**を選び、いったん全選択を解除する。
+4. 調べたいFaceの中央を普通にクリックする。選択したFaceがオレンジ色になる。
+5. 3Dビューポート右上にある重なった円の **Viewport Overlays**の右側の下向き矢印をクリックする。
+6. ポップオーバーの **Mesh Edit Mode**と **Normals**で、見たい情報を有効にする。
+
+| 知りたい情報 | Overlaysで有効にする項目 | 画面での見え方 |
+|---|---|---|
+| Faceの中心 | **Center** | 各Faceの中央に点が出る。Face Select時だけ表示される。 |
+| Face番号 | **Indices** | 選択したFaceに`0`、`1`……の番号が出る。 |
+| 面積 | **Face Area** | 選択したFaceに面積が数値表示される。 |
+| 表が向く方向 | **Face Normals** | Face中央から法線方向へ短い線が出る。見づらければ **Size**を大きくする。 |
+| 表・裏 | **Face Orientation** | 表側が青、裏側が赤になる。 |
+
+**Indices**が見つからない場合は、macOS上部メニューの **Blender → Settings... / Preferences... → Interface → Developer Extras**をオンにしてから、Viewport Overlaysをもう一度開く。Indicesは選択中の要素だけに表示される。したがって、Face SelectならFace番号、Vertex Selectなら頂点番号を確認できる。
+
+このレッスンの`Upper.Front`は **Face 5**。左の`Rock.Correct`で正面上側の三角形を選び、Indicesに`5`、Face Orientationで外側が青、Face Normalsが岩の外側を向くことを照合する。右の`Rock.FlippedFace`でもFace番号は`5`だが、同じ三角形の外側が赤く、法線は内側を向く。
+
+```text
+Properties（右下）    = Mesh全体の設定
+Viewport Overlays     = 選択したFaceの番号・面積・法線など
+Face Orientation      = 全Faceの表裏を色で確認
+```
+
+Faceを構成する頂点番号の組まで確認したい場合は、Face Selectで対象を選んでからVertex Selectへ切り替えると、そのFaceの角にある頂点が選択されたままになる。そこで **Indices**を有効にすると、`Upper.Front`では左の岩が`4`、`5`、`8`で構成されていることを画面上で確認できる。
+
 ## Face Orientationで確認する
 
 1. `.blend`を開き、3Dビューポート内を1回クリックする。
