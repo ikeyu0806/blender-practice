@@ -103,6 +103,30 @@ Assignをクリック
 
 ## コードでの対応
 
+### `make_material_slot_mesh()`の読み方
+
+この関数は、ObjectやMaterialではなく、直方体の**Meshデータブロックだけ**を作る。
+
+1. `vertex_coordinates`へ8個の座標を順番に並べる。並び順が`Vertex.index`の`0`〜`7`になる。
+2. `FACE_DEFINITIONS`の各要素から、Faceを囲む頂点番号だけを`face_vertex_indices`へ取り出す。Face名とMaterial slot番号は、この時点ではまだ使わない。
+3. `bpy.data.meshes.new(mesh_name)`で、中身が空のMeshデータブロックを作る。
+4. `from_pydata(vertex_coordinates, [], face_vertex_indices)`で、頂点・辺・面を作る。
+5. `update()`で追加した形状データをMesh内部へ反映し、そのMeshを返す。
+
+`from_pydata()`の3引数は次の意味になる。
+
+```text
+from_pydata(
+    頂点の座標,          # vertex_coordinates
+    独立指定する辺,      # []：今回はFaceの輪郭から作られる
+    面ごとの頂点番号,    # face_vertex_indices
+)
+```
+
+この関数を抜けた時点では、MeshはまだSceneに表示されない。`main()`でMaterial slotを追加し、`bpy.data.objects.new()`でMeshを参照するObjectを作り、そのObjectをCollectionへ所属させて初めて画面に現れる。
+
+`FACE_DEFINITIONS`には`(Face名, 頂点番号, Material slot番号)`が入っている。形の生成では頂点番号だけを使い、後の処理で同じ並びを使って各Faceへ`material_index`を設定する。1つの定義を「形を作る処理」と「Materialを割り当てる処理」の両方で使うことで、Faceの順番がずれないようにしている。
+
 Materialをslotへ追加する順番が、そのままslot番号になる。
 
 ```python

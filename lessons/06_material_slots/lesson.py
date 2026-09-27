@@ -67,22 +67,62 @@ def make_material(
 
 
 def make_material_slot_mesh(mesh_name: str) -> bpy.types.Mesh:
-    """FaceごとのMaterial割り当てを観察する直方体Meshを作る。"""
-    vertices = (
-        (-1.4, -1.0, 0.0),
-        (1.4, -1.0, 0.0),
-        (1.4, 1.0, 0.0),
-        (-1.4, 1.0, 0.0),
-        (-1.4, -1.0, 1.6),
-        (1.4, -1.0, 1.6),
-        (1.4, 1.0, 1.6),
-        (-1.4, 1.0, 1.6),
-    )
-    faces = tuple(vertex_indices for _, vertex_indices, _ in FACE_DEFINITIONS)
+    """8頂点と6面から、Material観察用の直方体Meshを作る。
 
+    ここではMeshデータブロックだけを作る。Objectの作成、Collectionへの所属、
+    Material slotの追加、Faceへのslot番号設定はmain()で別に行う。
+    """
+    # タプル内の並び順が、そのままVertex.indexの0〜7になる。
+    # 下4頂点と真上の4頂点は、0↔4、1↔5、2↔6、3↔7で対応する。
+    #
+    #        7-------6
+    #       /|      /|
+    #      4-------5 |
+    #      | 3-----|-2
+    #      |/      |/
+    #      0-------1
+    #
+    # 座標はMesh自身のローカル座標。Object.locationではない。
+    vertex_coordinates = (
+        # 底面の4頂点。Z=0なので、Objectの原点と底面の高さが一致する。
+        (-1.4, -1.0, 0.0),  # Vertex 0: X-, Y-, Z-
+        (1.4, -1.0, 0.0),   # Vertex 1: X+, Y-, Z-
+        (1.4, 1.0, 0.0),    # Vertex 2: X+, Y+, Z-
+        (-1.4, 1.0, 0.0),   # Vertex 3: X-, Y+, Z-
+        # 上面の4頂点。XYは底面と同じで、Zだけ1.6にする。
+        (-1.4, -1.0, 1.6),  # Vertex 4: Vertex 0の真上
+        (1.4, -1.0, 1.6),   # Vertex 5: Vertex 1の真上
+        (1.4, 1.0, 1.6),    # Vertex 6: Vertex 2の真上
+        (-1.4, 1.0, 1.6),   # Vertex 7: Vertex 3の真上
+    )
+
+    # FACE_DEFINITIONSの各要素は、(Face名, 頂点番号, Material slot番号)。
+    # Meshの形を作るこの段階では中央の「頂点番号」だけが必要なので、
+    # Face名とMaterial slot番号は_付き変数で受け、意図的に使わない。
+    # tuple()の結果は ((0, 3, 2, 1), (4, 5, 6, 7), ...) になる。
+    # この順番が後で作られるMeshPolygon.indexの0〜5にも対応する。
+    face_vertex_indices = tuple(
+        vertex_indices
+        for _face_name, vertex_indices, _material_index in FACE_DEFINITIONS
+    )
+
+    # bpy.data.meshes.new()は空のMeshデータブロックを作るだけ。
+    # まだObjectではなく、Sceneにも表示されていない。
     material_slot_mesh = bpy.data.meshes.new(mesh_name)
-    material_slot_mesh.from_pydata(vertices, [], faces)
+
+    # from_pydata(vertices, edges, faces)でPythonの座標と頂点番号から形を作る。
+    # 第1引数: 8個の頂点座標。
+    # 第2引数: 独立して定義するEdge。空ならFaceの輪郭から必要なEdgeが作られる。
+    # 第3引数: 各Faceを囲む頂点番号。今回は6組なので6枚のFaceになる。
+    # ここではMaterialやMaterial slotはまだ作られない。
+    material_slot_mesh.from_pydata(vertex_coordinates, [], face_vertex_indices)
+
+    # 追加した頂点・辺・面をMesh内部へ反映し、後続処理からpolygonsを読める
+    # 状態にする。ObjectとしてSceneへ置く処理ではない。
     material_slot_mesh.update()
+
+    # 戻り値はbpy.types.Mesh。main()がMaterial slotを追加したあと、
+    # bpy.data.objects.new()でこのMeshを参照するObjectを作る。
     return material_slot_mesh
 
 
