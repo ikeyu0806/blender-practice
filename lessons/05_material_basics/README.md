@@ -144,4 +144,4 @@ Meshの各Face
 
 ## 完了条件と次へ
 
-4サンプルについて、どの値だけがBaselineと違うかをMaterial Propertiesで確認し、Object、Mesh、Materialの役割を説明できれば完了。次は [06 Modifierの評価](../../docs/plan/README.md)。元のMeshと、Modifierで見た目が変わった評価後Meshの違いを調べる。
+4サンプルについて、どの値だけがBaselineと違うかをMaterial Propertiesで確認し、Object、Mesh、Materialの役割を説明できれば完了。次は [06 Material Slot](../06_material_slots/README.md)で、1つのMeshに複数のMaterialを登録し、Faceごとに使い分ける。

@@ -74,6 +74,8 @@ Scene（作業する場面）
 | 用語 | 意味 | 例 |
 |---|---|---|
 | **Material（マテリアル）** | 表面の色や光への反応など、見た目を決める設定。Mesh の形そのものではない。 | [レッスン05](../lessons/05_material_basics/README.md)で同じ形の球へ異なるMaterialを割り当てる。 |
+| **Material Slot（マテリアルスロット）** | Meshで使用候補となるMaterialを順番付きで登録する枠。slotがMaterialデータブロックを参照する。 | [レッスン06](../lessons/06_material_slots/README.md)で1つのMeshへ2つのslotを作る。 |
+| **`material_index`** | 各FaceがどのMaterial slotを使うかを示す0始まりの番号。 | `0`なら最初のslot、`1`なら2番目のslotを使う。 |
 | **Shader（シェーダー）** | 光を受けた表面をどう表示・描画するかを計算する仕組み。 | Material のノードで設定する。 |
 | **Principled BSDF** | 多くの質感をまとめて設定できる標準的なシェーダーノード。 | [レッスン05](../lessons/05_material_basics/README.md)でBase Color、Metallic、Roughnessを比較する。 |
 | **Texture（テクスチャ）** | 色・凹凸・粗さなどの変化に使う画像やデータ。 | 木目の画像を箱に貼る。 |
