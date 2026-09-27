@@ -61,13 +61,43 @@ Rails風の比喩では、`Mesh has_many :material_slots`、`MaterialSlot belong
 ショートカットは、マウスポインターがあるEditorへ作用する。最初に3Dビューポート内を1回クリックする。
 
 1. 3Dビューポート左上の **Object Mode** メニューから **Edit Mode** を選ぶ。`Tab`キーでも切り替えられるが、反応しない場合はメニューを使う。
-2. 上部の頂点・辺・面の3アイコンから、右端の **Face Select** をクリックする。
-3. Material Propertiesで`Material.Metal`のslotを選ぶ。
-4. slot一覧の下に出る **Select** をクリックする。上面と下面が選択される。
-5. `Material.Wood`のslotを選び、同じく **Select** をクリックする。側面4枚も選択される。
-6. 3Dビューポート左上の **Edit Mode** メニューから **Object Mode**へ戻る。
+2. 上部の頂点・辺・面の3アイコンから、右端の塗りつぶされた四角形 **Face Select** を**普通に1回クリック**する。青い背景になればFace Selectは有効。スクリーンショットはすでにこの状態になっている。
+3. `Shift`や`Ctrl`は押さない。ツールチップの`Shift-Click`は頂点・辺・面の選択モードを同時に有効にする操作、`Ctrl-Click`は選択要素を広げながらモードを変える操作で、この観察には不要。
+4. 右側のProperties Editorで、縦に並んだタブから赤い球の **Material Properties** をクリックする。
+5. Material slot一覧の`Material.Metal`を普通に1回クリックする。これはslotを操作対象にしただけで、Faceはまだ選択されない。
+6. 3Dビューポート上部の **Select → None** をクリックし、いったんすべてのFaceを非選択にする。ショートカットを使う必要はない。
+7. Material Propertiesへ戻り、slot一覧の下にある **Select** をクリックする。`Material.Metal`を使用中の上面がオレンジ色で選択される。下面も選択されているが、現在の角度では箱の裏に隠れている。
+8. 違いを見やすくするため、もう一度3Dビューポートの **Select → None** ですべて非選択にする。
+9. Material Propertiesで`Material.Wood`を普通に1回クリックし、その下の **Select** をクリックする。今度は木材slotを使用中の側面4枚が選択される。裏側の面は現在の角度では見えない。
+10. 観察が終わったら、3Dビューポート左上の **Edit Mode** メニューから **Object Mode**へ戻る。
 
 **Select**は「このslotをすでに使っているFaceを選ぶ」操作。**Assign**は「現在選択中のFaceに、このslot番号を設定する」操作。名前が似ているが向きが逆になる。
+
+### マウスでFaceを1枚選んでAssignする場合
+
+こちらも`Ctrl`クリックは使わない。
+
+1. Edit ModeとFace Selectのまま、3Dビューポートの **Select → None** ですべて非選択にする。
+2. 直方体の上面の中央を普通に1回クリックする。上面がオレンジ色になれば選択できている。複数のFaceを追加選択するときだけ`Shift`を押しながらクリックする。
+3. Material Propertiesで`Material.Wood`のslotをクリックする。
+4. slot一覧の下の **Assign** をクリックする。選択中の上面の`material_index`が`0`になり、上面が木材色へ変わる。
+5. 元へ戻すには、上面を選択したまま`Material.Metal`のslotをクリックし、**Assign**をクリックする。
+
+操作の役割を分けると、次の順番になる。
+
+```text
+Face Selectアイコンをクリック
+└── 面を選べるモードにする
+
+3DビューポートでFaceをクリック
+└── 操作対象の面を選ぶ
+
+Material slotの行をクリック
+└── 操作対象のslotを選ぶ
+
+Assignをクリック
+└── 選択中のFaceへslot番号を設定する
+```
 
 ## コードでの対応
 
