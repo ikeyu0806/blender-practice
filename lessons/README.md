@@ -9,6 +9,7 @@
 | [05](05_material_basics/README.md) | マテリアルの入口 | 実装済み |
 | [06](06_material_slots/README.md) | Material SlotとFaceの割り当て | 実装済み |
 | [07](07_modifier_evaluation/README.md) | Modifierの評価 | 実装済み |
+| [08](08_vertices_rock/README.md) | 頂点から作る岩とFaceの向き | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
@@ -35,6 +36,9 @@ lessons/
     README.md
     lesson.py
   07_modifier_evaluation/
+    README.md
+    lesson.py
+  08_vertices_rock/
     README.md
     lesson.py
 ```
