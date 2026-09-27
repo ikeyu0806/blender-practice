@@ -24,6 +24,8 @@ def lesson_path() -> Path:
 ROOT = lesson_path().parents[2]
 BLEND_PATH = ROOT / "output" / "07_modifier_evaluation.blend"
 
+# Widthは元の鋭いEdgeから、Bevelで置き換える範囲の広さ。
+# Segmentsはその範囲の断面を何分割して曲線へ近づけるか。
 BEVEL_WIDTH = 0.2
 BEVEL_SEGMENTS = 3
 
@@ -111,8 +113,16 @@ def main() -> None:
         name="Bevel.NonDestructive",
         type="BEVEL",
     )
+    # Widthを大きくするほど、元の角から離れた位置まで削られて丸みが大きくなる。
     bevel_modifier.width = BEVEL_WIDTH
+
+    # Segments=1は平らな斜面1枚の面取り。2以上にすると断面が分割され、
+    # デフォルトのProfile=0.5の曲線へ近づく。値を増やすほど滑らかになるが、
+    # 評価後Meshの頂点・辺・面も増える。
     bevel_modifier.segments = BEVEL_SEGMENTS
+
+    # ANGLEは、隣り合うFaceの角度がしきい値を超えるEdgeだけを対象にする。
+    # 立方体の12本のEdgeは90度なので、すべてBevelの対象になる。
     bevel_modifier.limit_method = "ANGLE"
 
     # Dependency Graphへ直前の変更を反映してから評価後Objectを取得する。
