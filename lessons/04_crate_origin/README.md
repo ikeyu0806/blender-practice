@@ -102,6 +102,32 @@ Scene Collection
 
 右下の Properties Editor では、`Crate.A` を選択して縦タブの**緑の三角（Object Data Properties）**を押すと、現在参照している Mesh の各種設定を確認できる。ただし「連結していない板が5つ」という個数はここには直接表示されないため、Edit Mode の **Select Linked** で形状のまとまりを見るのが分かりやすい。
 
+## 理解メモ：なぜ Object を Collection へ `link` する？
+
+この部分には、名前の似た3種類の関係が続けて書かれている。
+
+```text
+Crates Collection
+├── Crate.A Object
+│   ├── Location = (-1.5, 0, 0)
+│   └── data ──┐
+└── Crate.B Object
+    ├── Location = ( 1.5, 0, 0)
+    └── data ──┴── CrateBoards Mesh
+```
+
+| コード | 作る・変更する関係 |
+|---|---|
+| `bpy.data.objects.new("Crate.A", crate_mesh)` | `Crate.A` Objectを作り、その `data` に `crate_mesh` を参照させる。 |
+| `crates.objects.link(crate_a)` | `crate_a` を `Crates` Collectionへ所属させる。 |
+| `crate_a.location = (...)` | `crate_a` Object自身の配置を変更する。Meshの頂点は変更しない。 |
+
+`bpy.data.objects.new()` は `.blend` 内に Object データブロックを作るだけで、どの Collection にも自動では所属させない。そのままでは現在の Scene の Outliner や3Dビューポートに現れないため、`crates.objects.link(crate_a)` が必要になる。
+
+この `link` は、`Crate.A` と `Crate.B` を互いにつないだり、親子にしたり、Meshを共有させたりする操作ではない。Mesh共有は、その前の `objects.new()` で両方に同じ `crate_mesh` を渡した時点で成立している。Locationは各Object側にあるため、形は共有したまま別々の位置へ置ける。
+
+最後の `bpy.context.view_layer.update()` は新しいリンクを作る処理ではない。Locationなどの変更後にBlenderの評価結果を更新し、続く検査で使う `matrix_world` を最新の状態にする。
+
 ## 完了条件と次へ
 
 画面で木箱が2個とも地面に接することを見て、`Location Z=0` で接地する理由を **Mesh のローカル底面 Z=0** から説明できれば完了。次は [05 マテリアルの入口](../../docs/plan/README.md)。同じ木箱の形でも、色や粗さで見え方がどう変わるか調べる。

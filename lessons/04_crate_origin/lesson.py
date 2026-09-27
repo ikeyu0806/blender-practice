@@ -105,17 +105,30 @@ def main() -> None:
     crates = make_collection("Crates", scene)
     environment = make_collection("Environment", scene)
 
+    # objects.new() は Object データブロックを作るだけで、まだ Scene には出ない。
+    # 第2引数の Mesh を Object.data として参照させる。
     ground = bpy.data.objects.new("Ground", make_ground_mesh())
+    # Collection へ link して、初めてこの Scene の構成要素として表示される。
     environment.objects.link(ground)
     crate_mesh = make_crate_mesh()
 
-    # 2つの Object は同じ木箱 Mesh を共有するが、位置はそれぞれ独立。
+    # objects.new(name, object_data) の第2引数に同じ crate_mesh を渡す。
+    # これが「2つの Object が1つの Meshを共有する」関係を作る。
+    # この時点では Object データブロックを作っただけで、Scene にはまだ出ない。
     crate_a = bpy.data.objects.new("Crate.A", crate_mesh)
     crate_b = bpy.data.objects.new("Crate.B", crate_mesh)
+
+    # ここでの link は Object 同士をつなぐ操作ではない。
+    # 各 Object を Crates Collection に所属させ、Scene から見えるようにする。
     crates.objects.link(crate_a)
     crates.objects.link(crate_b)
+
+    # Location は Mesh ではなく各 Object が持つ。そのため、同じ形を共有しても
+    # Crate.A と Crate.B を別々の場所に置ける。
     crate_a.location = (-1.5, 0.0, 0.0)
     crate_b.location = (1.5, 0.0, CRATE_B_Z)
+
+    # 変更した配置を依存関係グラフへ反映し、matrix_world を最新にする。
     bpy.context.view_layer.update()
 
     print("=== 04 crate origin ===")
