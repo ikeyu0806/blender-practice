@@ -100,11 +100,13 @@ MeshのFaceは厚みを持つ板ではなく、表と裏を持つ面。法線は
 ```text
 3Dビューポート右上（最大化すると見つけやすい）
 …  青いGizmos  ▼   青いViewport Overlays  ▼   四隅の枠   □   地球・白丸などの表示モード
-                            ↑
-                  右側にある青い丸ボタン
+       これは違う              ↑
+                    こちらの青い丸ボタン
 ```
 
-最大化後のスクリーンショットでは、右上のアイコン列に青いボタンが2つある。Viewport Overlaysは、**右側の青い丸ボタン**と、そのすぐ右隣の小さな下向き矢印。さらに右には「四隅の枠」のようなアイコン、四角いアイコン、地球や白丸などの表示モードが並ぶ。青い丸ボタン自体はOverlay全体の表示切り替えで、Face Areaなどの詳細を開くのは、そのすぐ右隣の小さな下向き矢印。
+最大化後のスクリーンショットでは、右上のアイコン列に青いボタンが2つある。左の青いボタンの矢印を開くと、タイトルが **Viewport Gizmos**のパネルになる。これは移動・回転・拡大縮小などの操作ハンドルの設定であり、今回探しているものではない。
+
+Viewport Overlaysは、**その1つ右にある青い丸ボタン**と、そのすぐ右隣の小さな下向き矢印。さらに右には「四隅の枠」のようなアイコン、四角いアイコン、地球や白丸などの表示モードが並ぶ。青い丸ボタン自体はOverlay全体の表示切り替えで、Face Areaなどの詳細を開くのは、そのすぐ右隣の小さな下向き矢印。正しいパネルを開くと、タイトルではなく **Guides**、**Objects**、**Geometry**、**Mesh Edit Mode**などの区分が表示される。
 
 分割画面のスクリーンショット右下にある検索欄横の下向き矢印は、Properties Editorの **Options**であり、Viewport Overlaysではない。Viewport Overlaysは必ず、岩が表示されている3Dビューポートの上端にある。
 
@@ -129,6 +131,30 @@ Face Orientation      = 全Faceの表裏を色で確認
 ```
 
 Faceを構成する頂点番号の組まで確認したい場合は、Face Selectで対象を選んでからVertex Selectへ切り替えると、そのFaceの角にある頂点が選択されたままになる。そこで **Indices**を有効にすると、`Upper.Front`では左の岩が`4`、`5`、`8`で構成されていることを画面上で確認できる。
+
+## Face情報はどこで閲覧・編集する？
+
+Blenderには、Faceをデータベースの1レコードのように選び、全フィールドを1つのフォームで閲覧・編集する画面はない。Faceの値には、直接変更する値と、頂点から自動計算される値が混在するため、目的ごとに画面や操作を使い分ける。
+
+```text
+Mesh
+└── Face 5 Upper.Front
+    ├── vertices = (4, 5, 8)  ← どの頂点を結ぶか
+    ├── center                ← 頂点位置から自動計算
+    ├── area                  ← 頂点位置から自動計算
+    ├── normal                ← 頂点位置と並び順から自動計算
+    └── material_index        ← Material slotの割り当て番号
+```
+
+| 目的 | 閲覧する場所 | 編集方法 |
+|---|---|---|
+| Face番号・面積・法線 | 3DビューポートのViewport Overlays | 面積や法線は直接数値入力せず、頂点を動かすと再計算される。 |
+| Faceの形・位置 | Edit ModeでFaceを選択 | `G`で移動、`R`で回転、`S`で拡大縮小、`E`で押し出す。実際にはFaceを構成する頂点が動く。 |
+| Faceの表裏 | Face OrientationまたはFace Normals | **Mesh → Normals → Flip**で反転、**Recalculate Outside**で外向きに再計算する。 |
+| 使用Material | Material PropertiesのMaterial slot | Faceを選択し、slotを選んで **Assign**する。 |
+| Face属性を表形式で一覧 | エリアを **Spreadsheet Editor**へ変更し、MeshのFace Domainを選ぶ | Spreadsheetは確認用。編集はEdit Modeの各操作や **Mesh → Set Attribute**などで行う。 |
+
+したがって、このレッスンで最初に確認するなら、Face Selectで1面を選び、Viewport Overlaysの **Indices**、**Face Area**、**Face Normals**をオンにするのが最短。全Faceを表として比較したくなった段階でSpreadsheet Editorを使う。
 
 ## Face Orientationで確認する
 
