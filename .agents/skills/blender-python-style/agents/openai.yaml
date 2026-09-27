@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blender Python Style"
+  short_description: "Keep Blender lesson data types obvious in code"
+  default_prompt: "Use $blender-python-style to make this Blender lesson script easier to read."

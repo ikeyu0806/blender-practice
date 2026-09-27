@@ -2,4 +2,6 @@
 
 人物・モンスター・背景の Blender モデルを自力で開発できるようになるための教材を育てる。レッスン追加、既存レッスンの改善、Blender に関する質問の記録、ロードマップの変更では、先に [blender-lessons skill](.agents/skills/blender-lessons/SKILL.md) を読む。
 
+Blender用Pythonスクリプトを追加・編集・レビューするときは、さらに [blender-python-style skill](.agents/skills/blender-python-style/SKILL.md) を読み、Object、Mesh、Collectionなどの型と関係が変数名から分かるようにする。
+
 レッスンは番号付きサブフォルダにスクリプトと詳しい README を対で置く。プロジェクトに関わる質問には会話で答え、関連レッスンまたは `docs/notes/` に回答を残す。作業は内容ごとに Git commit する。ユーザーがその依頼で指定した形式・範囲があれば、そちらを優先する。
