@@ -102,6 +102,31 @@ Scene Collection
 
 右下の Properties Editor では、`Crate.A` を選択して縦タブの**緑の三角（Object Data Properties）**を押すと、現在参照している Mesh の各種設定を確認できる。ただし「連結していない板が5つ」という個数はここには直接表示されないため、Edit Mode の **Select Linked** で形状のまとまりを見るのが分かりやすい。
 
+## 理解メモ：片方の形を編集すると、もう片方も変わる？
+
+`CrateBoards` は1つの共有 Mesh なので、**Edit Modeで頂点・辺・面を変えると `Crate.A` と `Crate.B` の両方が変わる**。一方、Object ModeのLocation、Rotation、Scale、Dimensionsは各ObjectのTransformなので、片方を変更しても、もう片方のTransformは変わらない。
+
+| 操作 | 変更するデータ | 結果 |
+|---|---|---|
+| Edit Modeで頂点を移動・拡大 | 共有する`CrateBoards` Mesh | 両方の木箱の形が変わる |
+| Object ModeでScaleやDimensionsを変更 | 選択したObjectのTransform | 選択した木箱だけが変わる |
+| Object ModeでLocationを変更 | 選択したObjectのTransform | 選択した木箱だけが移動する |
+
+任意のMeshには「長さ」という1個の設定値があるわけではない。形の長さは頂点の位置から決まるため、Meshそのものを長くする場合はEdit Modeで頂点・辺・面を選び、MoveやScaleを使う。
+
+両方が変わることは、Keymapに依存しない次の手順で確認できる。
+
+1. 手作業の結果を残さない実験として、必要なら先に `.blend` を別名保存する。
+2. Object Modeから始める場合は、Outlinerで緑の`CrateBoards`行ではなく、オレンジの三角が付いた`Crate.A`または`Crate.B`のObject行を選ぶ。すでにEdit Modeで頂点が見えている場合は、そのままでよい。
+3. Object Modeの場合は、3Dビューポート左上のModeメニューから **Edit Mode** に入る。
+4. 3Dビューポート上部の **Select → All** で、40頂点すべてを選ぶ。
+5. **Mesh → Transform → Scale** を選び、`1.2`と入力して確定する。共有Mesh全体が1.2倍になり、もう一方の木箱も同時に大きくなる。
+6. 実験を戻す場合は、画面上部の **Edit → Undo** を使う。
+
+比較として、Object Modeへ戻って片方のObjectだけを選び、右側の **Object Properties → Transform → Scale** を変更すると、そのObjectだけが変わる。これは共有Meshを編集したのではなく、そのObjectがMeshを表示するときの倍率を変更したため。
+
+[Blender Manual: Object ModeとEdit Mode](https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/transform/introduction.html)・[Blender Manual: MeshのMove、Rotate、Scale](https://docs.blender.org/manual/en/5.2/modeling/meshes/editing/mesh/transform/basic.html)
+
 ## 理解メモ：なぜ Object を Collection へ `link` する？
 
 この部分には、名前の似た3種類の関係が続けて書かれている。
