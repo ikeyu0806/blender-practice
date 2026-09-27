@@ -88,54 +88,51 @@ MeshのFaceは厚みを持つ板ではなく、表と裏を持つ面。法線は
 
 スクリーンショットはすでに **Edit Mode**だが、`Edit Mode`の右に並ぶ3つの選択アイコンでは、左端の **Vertex Select**が青くなっている。Faceを調べるときは、右端の塗りつぶされた四角形アイコン **Face Select**を普通にクリックする。`control`や`command`は押さなくてよい。
 
-また、右下に表示されている緑の三角形タブは **Object Data Properties**で、Mesh全体の設定を見る場所。Face 0、Face 1……という個別レコードの一覧は、ここには表示されない。Faceごとの情報は、3Dビューポートの **Viewport Overlays**へ表示する。
+また、右下に表示されている緑の三角形タブは **Object Data Properties**で、Mesh全体の設定を見る場所。Face 0、Face 1……という個別レコードの一覧は、ここには表示されない。Faceごとの情報は、3Dビューポートの **Mesh Edit Mode Overlays**へ表示する。
 
 1. 岩が小さい場合は、現在のように岩全体がオレンジ色の状態で **View → Frame Selected**を選び、画面へ大きく表示する。
 2. `Edit Mode`の右にある3アイコンのうち、右端の **Face Select**をクリックする。
 3. 上部の **Select → None**を選び、いったん全選択を解除する。
 4. 調べたいFaceの中央を普通にクリックする。選択したFaceがオレンジ色になる。
-5. 3Dビューポート右上にある重なった円の **Viewport Overlays**の右側の下向き矢印をクリックする。今回のように右側のProperties領域が広く、3Dビューポートが狭い画面では、このアイコンがヘッダーの外へ隠れることがある。その場合は、3Dビューポート上端にある **View → Area → Toggle Maximize Area**を選ぶ。これは岩の表示を操作する`View`メニューであり、macOS最上部の別メニューではない。右上にアイコンが現れたら下向き矢印をクリックする。元へ戻すときは **View → Area → Restore Area**を選ぶ。
-6. ポップオーバーの **Mesh Edit Mode**と **Normals**で、見たい情報を有効にする。
+5. 3Dビューポート右上で、青い丸の **Viewport Overlays**を見つける。その右側の下向き矢印を開くと、`Guides`、`Text`、`Objects`、`Geometry`などを含む一般Overlayが出る。**Face Orientation**はここにある。
+6. Face番号・面積・法線を見る場合は一般Overlayを閉じ、さらに1つ右隣にある「4頂点を線で結んだ四角形」のような **Mesh Edit Mode Overlays**アイコンと下向き矢印をクリックする。
+7. タイトルが **Mesh Edit Mode**のポップオーバーで、**Indices**をオンにする。**Measurement**を展開して **Face Area**、**Normals**を展開して **Face Normals**をオンにする。
 
 ```text
-3Dビューポート右上（最大化すると見つけやすい）
-…  青いGizmos  ▼   青いViewport Overlays  ▼   四隅の枠   □   地球・白丸などの表示モード
-       これは違う              ↑
-                    こちらの青い丸ボタン
+3Dビューポート右上（Blender 5.2.2）
+…  Gizmos ▼  一般Viewport Overlays ▼  Mesh Edit Mode Overlays ▼  X-Ray  表示モード
+                    │                         │
+                    └ Face Orientation       └ Indices・Face Area・Face Normals
 ```
 
-最大化後のスクリーンショットでは、右上のアイコン列に青いボタンが2つある。左の青いボタンの矢印を開くと、タイトルが **Viewport Gizmos**のパネルになる。これは移動・回転・拡大縮小などの操作ハンドルの設定であり、今回探しているものではない。
+Blender 4.0以降、モード固有のOverlay設定は一般Viewport Overlaysとは別ポップオーバーへ移動した。Blender 5.2.2で`Guides`、`Text`、`Objects`、`Geometry`、`Viewer Node`、`Motion Tracking`だけが表示されるのは正常で、その一般パネルをスクロールしてもMesh Edit Modeは現れない。
 
-Viewport Overlaysは、**その1つ右にある青い丸ボタン**と、そのすぐ右隣の小さな下向き矢印。さらに右には「四隅の枠」のようなアイコン、四角いアイコン、地球や白丸などの表示モードが並ぶ。青い丸ボタン自体はOverlay全体の表示切り替えで、Face Areaなどの詳細を開くのは、そのすぐ右隣の小さな下向き矢印。正しいパネルを開くと、タイトルではなく **Guides**、**Objects**、**Geometry**、**Mesh Edit Mode**などの区分が表示される。
+また、Blender 4.4以降は **Indices**が常時表示されるようになり、**Developer Extrasは不要**。古いBlender向けの解説では、一般Overlay内を探す手順やDeveloper Extrasを有効にする手順が書かれていることがあるため注意する。
 
-スクリーンショットのように **Guides**、**Text**、**Objects**、**Geometry**、**Viewer Node**まで見えていれば、正しいViewport Overlaysを開けている。**Mesh Edit Mode**は **Motion Tracking**よりさらに下にある。各見出し左側の小さな下向き三角形をクリックし、**Guides**、**Text**、**Objects**、**Geometry**、**Viewer Node**、**Motion Tracking**を折り畳むと、下のMesh Edit Modeを見つけやすい。
+この違いは、[Blender 4.0のViewport変更](https://developer.blender.org/docs/release_notes/4.0/viewport/#overlays)と[Blender 4.4のUI変更](https://developer.blender.org/docs/release_notes/4.4/user_interface/)にも記載されている。このレッスンでは、実際に使っている **Blender 5.2.2 LTS**の画面を基準にする。
 
-それでも下が見えない場合は、マウスポインターを黒いパネル内の項目名か余白へ置き、トラックパッドを2本指で上へ動かして内容を下までスクロールする。数値欄の上でスクロールすると値が変わることがあるため避ける。スクリーンショットでは **Motion Tracking**が展開され、その中の`Camera Path`などがパネル下端に表示されているので、Mesh Edit Modeはそのさらに下へ隠れている。
-
-一番下まで移動しても **Mesh Edit Mode**がない場合は、パネルを閉じ、3Dビューポート左上のモード表示が **Edit Mode**になっているか確認する。Object ModeではEdit Mode専用の項目は表示されない。Mesh Edit Mode内の **Measurements → Face Area**をオンにすると、選択中のFaceへ面積が表示される。
-
-**Indices**はDeveloper Extrasを有効にした場合だけ表示される。macOS上部メニューの **Blender → Settings... / Preferences... → Interface → Developer Extras**をオンにし、Viewport Overlaysを開き直して **Mesh Edit Mode → Developer → Indices**をオンにする。
+Mesh Edit Mode Overlaysアイコンが見えない場合は、3Dビューポート上端の **View → Area → Toggle Maximize Area**で表示領域を広げる。元へ戻すときは **View → Area → Restore Area**を選ぶ。この専用アイコンはMeshのEdit Mode中だけ表示される。
 
 分割画面のスクリーンショット右下にある検索欄横の下向き矢印は、Properties Editorの **Options**であり、Viewport Overlaysではない。Viewport Overlaysは必ず、岩が表示されている3Dビューポートの上端にある。
 
 **control + space**は同じ操作のショートカットだが、カーソル位置やキーマップによって反応しない場合がある。迷ったときは上記のメニュー操作を使う。もう1つの方法は、3Dビューポートと右側領域の境界線を右へドラッグして、3Dビューポート自体を広げること。
 
-| 知りたい情報 | Overlaysで有効にする項目 | 画面での見え方 |
-|---|---|---|
-| Faceの中心 | **Center** | 各Faceの中央に点が出る。Face Select時だけ表示される。 |
-| Face番号 | **Indices** | 選択したFaceに`0`、`1`……の番号が出る。 |
-| 面積 | **Face Area** | 選択したFaceに面積が数値表示される。 |
-| 表が向く方向 | **Face Normals** | Face中央から法線方向へ短い線が出る。見づらければ **Size**を大きくする。 |
-| 表・裏 | **Face Orientation** | 表側が青、裏側が赤になる。 |
+| 知りたい情報 | 開くポップオーバー | 有効にする項目 | 画面での見え方 |
+|---|---|---|---|
+| Faceの中心 | Mesh Edit Mode Overlays | **Center** | 各Faceの中央に点が出る。Face Select時だけ表示される。 |
+| Face番号 | Mesh Edit Mode Overlays | **Indices** | 選択したFaceに`0`、`1`……の番号が出る。 |
+| 面積 | Mesh Edit Mode Overlays → Measurement | **Face Area** | 選択したFaceに面積が数値表示される。 |
+| 表が向く方向 | Mesh Edit Mode Overlays → Normals | **Face Normals** | Face中央から法線方向へ短い線が出る。見づらければ **Size**を大きくする。 |
+| 表・裏 | 一般Viewport Overlays → Geometry | **Face Orientation** | 表側が青、裏側が赤になる。 |
 
-**Indices**が見つからない場合は、macOS上部メニューの **Blender → Settings... / Preferences... → Interface → Developer Extras**をオンにしてから、Viewport Overlaysをもう一度開く。Indicesは選択中の要素だけに表示される。したがって、Face SelectならFace番号、Vertex Selectなら頂点番号を確認できる。
+Indicesは選択中の要素だけに表示される。Face SelectならFace番号、Vertex Selectなら頂点番号を確認できる。
 
 このレッスンの`Upper.Front`は **Face 5**。左の`Rock.Correct`で正面上側の三角形を選び、Indicesに`5`、Face Orientationで外側が青、Face Normalsが岩の外側を向くことを照合する。右の`Rock.FlippedFace`でもFace番号は`5`だが、同じ三角形の外側が赤く、法線は内側を向く。
 
 ```text
 Properties（右下）    = Mesh全体の設定
-Viewport Overlays     = 選択したFaceの番号・面積・法線など
-Face Orientation      = 全Faceの表裏を色で確認
+一般Viewport Overlays = Face Orientationなど共通表示
+Mesh Edit Mode Overlay = 選択したFaceの番号・面積・法線など
 ```
 
 Faceを構成する頂点番号の組まで確認したい場合は、Face Selectで対象を選んでからVertex Selectへ切り替えると、そのFaceの角にある頂点が選択されたままになる。そこで **Indices**を有効にすると、`Upper.Front`では左の岩が`4`、`5`、`8`で構成されていることを画面上で確認できる。
@@ -156,13 +153,13 @@ Mesh
 
 | 目的 | 閲覧する場所 | 編集方法 |
 |---|---|---|
-| Face番号・面積・法線 | 3DビューポートのViewport Overlays | 面積や法線は直接数値入力せず、頂点を動かすと再計算される。 |
+| Face番号・面積・法線 | 3DビューポートのMesh Edit Mode Overlays | 面積や法線は直接数値入力せず、頂点を動かすと再計算される。 |
 | Faceの形・位置 | Edit ModeでFaceを選択 | `G`で移動、`R`で回転、`S`で拡大縮小、`E`で押し出す。実際にはFaceを構成する頂点が動く。 |
 | Faceの表裏 | Face OrientationまたはFace Normals | **Mesh → Normals → Flip**で反転、**Recalculate Outside**で外向きに再計算する。 |
 | 使用Material | Material PropertiesのMaterial slot | Faceを選択し、slotを選んで **Assign**する。 |
 | Face属性を表形式で一覧 | エリアを **Spreadsheet Editor**へ変更し、MeshのFace Domainを選ぶ | Spreadsheetは確認用。編集はEdit Modeの各操作や **Mesh → Set Attribute**などで行う。 |
 
-したがって、このレッスンで最初に確認するなら、Face Selectで1面を選び、Viewport Overlaysの **Indices**、**Face Area**、**Face Normals**をオンにするのが最短。全Faceを表として比較したくなった段階でSpreadsheet Editorを使う。
+したがって、このレッスンで最初に確認するなら、Face Selectで1面を選び、Mesh Edit Mode Overlaysの **Indices**、**Face Area**、**Face Normals**をオンにするのが最短。全Faceを表として比較したくなった段階でSpreadsheet Editorを使う。
 
 ## Face Orientationで確認する
 
