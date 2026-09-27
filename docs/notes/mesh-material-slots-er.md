@@ -28,6 +28,8 @@ Face
 erDiagram
     COLLECTION }o--o{ OBJECT : "所属"
     MESH ||--o{ OBJECT : "dataから参照される"
+    MESH ||--o{ VERTEX : "形として含む"
+    MESH ||--o{ EDGE : "形として含む"
     MESH ||--|{ FACE : "形として含む"
     MESH ||--o{ MATERIAL_SLOT : "順番付きで持つ"
     MATERIAL ||--o{ MATERIAL_SLOT : "参照される"
@@ -46,6 +48,16 @@ erDiagram
     MESH {
         string name
         int users
+    }
+
+    VERTEX {
+        int index
+        string coordinate
+    }
+
+    EDGE {
+        int index
+        string vertex_indices
     }
 
     FACE {
@@ -115,6 +127,30 @@ end
 ```
 
 Railsとの最大の違いは、`Face belongs_to :material_slot`に相当する部分が外部キーではないこと。Faceは`material_slot_id`を持たず、**同じMesh内の配列番号**である`material_index`を持つ。
+
+## Material Slot番号を持つのはFaceだけ？
+
+**Meshの構成要素ではFaceだけ**。Blender PythonではFaceを`MeshPolygon`として扱い、`MeshPolygon.material_index`がMaterial slot番号を持つ。VertexとEdgeには`material_index`がない。
+
+```text
+Mesh
+├── vertices[]  Vertex ── material_indexなし
+├── edges[]     Edge   ── material_indexなし
+├── polygons[]  Face   ── material_indexあり
+└── materials[]        ── Material slotの並び
+```
+
+| Meshの構成要素 | Material slot番号 | 主に持つ情報 |
+|---|---|---|
+| Vertex（頂点） | 持たない | 座標、法線、頂点グループのウェイトなど |
+| Edge（辺） | 持たない | 接続する2頂点、Seam、Sharpなど |
+| Face / Polygon（面） | `material_index`を持つ | 面を構成する要素、法線、使用するMaterial slot番号など |
+
+Materialは表面の見え方を計算するため、Meshでは「面」が割り当て単位になる。頂点や辺の選択モードから**Assign**を操作した場合も、値が書き込まれる対象は選択状態になったFace。VertexやEdge自身へslot番号が書き込まれることはなく、対象となるFaceが選択されていなければ割り当ても変わらない。
+
+Vertex Color、頂点グループ、UV、Geometry Nodesの属性などをShaderへ入力し、頂点や場所によって色を変える方法はある。ただし、それはVertexやEdgeへMaterial slotを直接割り当てる仕組みとは別。
+
+Mesh以外のCurve、TextなどもMaterial slotを利用でき、割り当て単位はデータ型ごとに異なる。この文書とレッスン06ではMeshだけを対象にする。
 
 ## レッスン06をテーブル風に見る
 
@@ -221,3 +257,10 @@ BlenderにはMaterial slotの参照元をObject側にする設定もある。そ
 - [03 Collection](../../lessons/03_collection/README.md)：CollectionとObjectの所属関係
 - [05 マテリアルの入口](../../lessons/05_material_basics/README.md)：MaterialとPrincipled BSDF
 - [06 Material Slot](../../lessons/06_material_slots/README.md)：Faceごとにslotを使い分ける操作
+
+## 公式資料
+
+- [Blender 5.2 Python API：MeshPolygon](https://docs.blender.org/api/5.2/bpy.types.MeshPolygon.html)
+- [Blender 5.2 Python API：MeshVertex](https://docs.blender.org/api/5.2/bpy.types.MeshVertex.html)
+- [Blender 5.2 Python API：MeshEdge](https://docs.blender.org/api/5.2/bpy.types.MeshEdge.html)
+- [Blender 5.2 Manual：Material Index](https://docs.blender.org/manual/en/5.2/modeling/geometry_nodes/geometry/material/material_index.html)
