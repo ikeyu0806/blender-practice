@@ -108,7 +108,9 @@ MeshのFaceは厚みを持つ板ではなく、表と裏を持つ面。法線は
 
 Viewport Overlaysは、**その1つ右にある青い丸ボタン**と、そのすぐ右隣の小さな下向き矢印。さらに右には「四隅の枠」のようなアイコン、四角いアイコン、地球や白丸などの表示モードが並ぶ。青い丸ボタン自体はOverlay全体の表示切り替えで、Face Areaなどの詳細を開くのは、そのすぐ右隣の小さな下向き矢印。正しいパネルを開くと、タイトルではなく **Guides**、**Objects**、**Geometry**、**Mesh Edit Mode**などの区分が表示される。
 
-スクリーンショットのように **Guides**、**Text**、**Objects**、**Geometry**、**Viewer Node**まで見えていれば、正しいViewport Overlaysを開けている。**Mesh Edit Mode**はさらに下にあるため、マウスポインターを黒いパネル内の空いている場所へ置き、トラックパッドを2本指で上へ動かして内容を下までスクロールする。数値欄の上でスクロールすると値が変わることがあるので、項目名の上か余白で操作する。
+スクリーンショットのように **Guides**、**Text**、**Objects**、**Geometry**、**Viewer Node**まで見えていれば、正しいViewport Overlaysを開けている。**Mesh Edit Mode**は **Motion Tracking**よりさらに下にある。各見出し左側の小さな下向き三角形をクリックし、**Guides**、**Text**、**Objects**、**Geometry**、**Viewer Node**、**Motion Tracking**を折り畳むと、下のMesh Edit Modeを見つけやすい。
+
+それでも下が見えない場合は、マウスポインターを黒いパネル内の項目名か余白へ置き、トラックパッドを2本指で上へ動かして内容を下までスクロールする。数値欄の上でスクロールすると値が変わることがあるため避ける。スクリーンショットでは **Motion Tracking**が展開され、その中の`Camera Path`などがパネル下端に表示されているので、Mesh Edit Modeはそのさらに下へ隠れている。
 
 一番下まで移動しても **Mesh Edit Mode**がない場合は、パネルを閉じ、3Dビューポート左上のモード表示が **Edit Mode**になっているか確認する。Object ModeではEdit Mode専用の項目は表示されない。Mesh Edit Mode内の **Measurements → Face Area**をオンにすると、選択中のFaceへ面積が表示される。
 
