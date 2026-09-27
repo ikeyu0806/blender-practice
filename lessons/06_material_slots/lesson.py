@@ -155,10 +155,17 @@ def main() -> None:
         roughness=0.25,
     )
 
-    # ③ 1つのMeshへ、順番を持つMaterial slotを2つ追加する。
+    # ③ 側面をWood、上下面をMetalに分けるため、Material slotを2つ使う。
     material_slot_mesh = make_material_slot_mesh("Sample.MaterialSlots.Mesh")
+
+    # make_material()でMaterialデータブロックを作っただけでは、まだこのMeshから
+    # 使えない。materials.append()でMeshの使用候補へ参照を登録する。
+    # append()した順番がslot番号になる。Materialを複製しているわけではない。
     material_slot_mesh.materials.append(wood_material)   # slot[0]
     material_slot_mesh.materials.append(metal_material)  # slot[1]
+
+    # slotが1つだけなら、全Faceは同じ1種類のMaterialしか選べない。
+    # 2つあるため、次の④でFaceごとにmaterial_index=0または1を設定できる。
 
     # ④ FaceはMaterialそのものではなく、使用するslot番号を記録する。
     for polygon, (_, _, material_index) in zip(

@@ -134,6 +134,16 @@ material_slot_mesh.materials.append(wood_material)   # slot[0]
 material_slot_mesh.materials.append(metal_material)  # slot[1]
 ```
 
+2つのslotを作るのは、**同じMeshの側面と上下面で、別々のMaterialを選べるようにするため**。`make_material()`でMaterialデータブロックを2つ作っただけでは、そのMeshが使用できるMaterial候補にはならない。`materials.append()`でMeshの一覧へ参照を登録する必要がある。
+
+```text
+Mesh.materials
+├── slot[0] → 既存のwood_materialを参照
+└── slot[1] → 既存のmetal_materialを参照
+```
+
+`append()`はMaterialのコピーを作る処理ではない。既存のMaterialへの参照を、Meshのslotへ順番に追加する処理。slotが1つしかなければ、すべてのFaceはその1種類しか選べない。slotが2つあるため、各Faceの`material_index`を`0`または`1`にして使い分けられる。
+
 各FaceはMaterialへの直接参照ではなく、整数の`material_index`を持つ。
 
 ```python
