@@ -13,6 +13,7 @@
 
 ## 文書一覧
 
+- [Blender レッスンのログはどこで見る？](where-to-find-logs.md)
 - [Blender Mac版：最初に迷わないための画面操作](blender-mac-controls.md)
 - [`lesson.py` と Blender の画面は同期する？](script-workflow.md)
 - [Blender の Scene は画面のどこで管理する？](scene-ui.md)

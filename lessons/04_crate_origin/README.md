@@ -69,7 +69,7 @@ Scene Collection
 4. `Crate.A` と `Crate.B` の2つの Object に同じ Mesh を渡し、左右の位置を別々に設定する。地面の Object は `Environment` に入れる。
 5. ログで Mesh の最下点、各 Object の原点と底面、地面の上面を比べる。さらに板5枚分の40頂点・30面と Mesh の共有を検査して `.blend` に保存する。
 
-ログの `mesh local bottom=0.000` は形状の底、`origin_z=0.000` は Object の基準点、`bottom_z=0.000` は配置後の底の高さ。3つが同じなので地面に接する。
+ログの `mesh local bottom=0.000` は形状の底、`origin_z=0.000` は Object の基準点、`bottom_z=0.000` は配置後の底の高さ。3つが同じなので地面に接する。`print()` の行はコマンドを実行したターミナルに表示される。[ログの見方](../../docs/notes/where-to-find-logs.md)も参照する。
 
 ## 変更実験
 
