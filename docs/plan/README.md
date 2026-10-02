@@ -60,7 +60,7 @@
 | [18](../../lessons/18_collection_instances/README.md) | 反復配置 ✅ | Collection Instance または Geometry Nodes で同じ資産を繰り返す。 |
 | [19](../../lessons/19_lighting/README.md) | 照明と色 ✅ | 主光源、補助光、環境光で形の読みやすさを比較。 |
 | [20](../../lessons/20_camera_composition/README.md) | カメラと構図 ✅ | 視点、焦点距離、前景・中景・背景を整理。 |
-| 21 | 背景の小作品 | 入口のある小部屋か屋外の一角を仕上げる。 |
+| [21](../../lessons/21_environment_project/README.md) | 背景の小作品 ✅ | 入口のある小部屋か屋外の一角を仕上げる。 |
 
 **小作品・通過条件:** 再利用できる部品で背景を作り、1枚の画像と再編集可能な `.blend` を残す。同じ部品を直したとき、どの配置に反映されるか予測できる。
 
