@@ -94,7 +94,7 @@
 | [31](../../lessons/31_creature_structure/README.md) | 非人体の構造 ✅ | 尾、角、翼、追加の脚などを分割・接続する。 |
 | [32](../../lessons/32_sculpt_retopology/README.md) | Sculptとリトポロジー ✅ | 高密度の造形から扱いやすいメッシュへ戻す。 |
 | [33](../../lessons/33_expression_deformation/README.md) | 変形と表情 ✅ | Shape Key や骨を使い、顔・口・尾を動かす。 |
-| 34 | モンスターの小作品 | 1体を中立姿勢とアクション姿勢で見せる。 |
+| [34](../../lessons/34_monster_project/README.md) | モンスターの小作品 ✅ | 1体を中立姿勢とアクション姿勢で見せる。 |
 
 **小作品・通過条件:** 人物との違いがシルエットで分かるモンスターを1体作る。ポーズを変えても特徴が保たれ、必要な部分の変形を説明できる。
 
