@@ -106,7 +106,7 @@
 | [36](../../lessons/36_dependency_evaluation/README.md) | 依存関係と評価結果 ✅ | Modifier や Geometry Nodes の評価前後を調べる。 |
 | [37](../../lessons/37_asset_validation/README.md) | アセット検査 ✅ | 寸法、法線、参照切れ、命名をまとめて検査。 |
 | [38](../../lessons/38_export_roundtrip/README.md) | 書き出しと再取り込み ✅ | 人物・モンスター・背景を用途に合わせて検証。 |
-| 39 | 操作用アドオン | 繰り返す処理を小さな Blender UI にする。 |
+| [39](../../lessons/39_inspection_addon/README.md) | 操作用アドオン ✅ | 繰り返す処理を小さな Blender UI にする。 |
 | 40 | 最終制作 | 3種類のモデルを1つのシーンで見せ、生成・検査手順も残す。 |
 
 **完成条件:** 人物、モンスター、背景を1セット作り、修正を再現できるスクリプトと検査手順を用意する。形・見た目・動き・出力の問題を、Blender のデータ構造に戻って切り分けられる。
