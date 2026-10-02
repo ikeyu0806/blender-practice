@@ -29,6 +29,7 @@
 | [25](25_joint_topology/README.md) | 関節周辺のトポロジー | 実装済み |
 | [26](26_clothing_parts/README.md) | 衣装と部品分割 | 実装済み |
 | [27](27_character_uv/README.md) | 人物のUVと質感 | 実装済み |
+| [28](28_armature_weights/README.md) | Armatureとウェイト | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
