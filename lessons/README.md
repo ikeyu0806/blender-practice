@@ -41,6 +41,7 @@
 | [37](37_asset_validation/README.md) | アセット検査 | 実装済み |
 | [38](38_export_roundtrip/README.md) | 書き出しと再取り込み | 実装済み |
 | [39](39_inspection_addon/README.md) | 操作用アドオン | 実装済み |
+| [40](40_final_project/README.md) | 最終制作 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
