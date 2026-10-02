@@ -20,6 +20,7 @@
 | [16](16_modular_room/README.md) | モジュラー背景 | 実装済み |
 | [17](17_terrain/README.md) | 地形と地面 | 実装済み |
 | [18](18_collection_instances/README.md) | 反復配置 | 実装済み |
+| [19](19_lighting/README.md) | 照明と色 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 

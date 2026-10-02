@@ -58,7 +58,7 @@
 | [16](../../lessons/16_modular_room/README.md) | モジュラー背景 ✅ | 壁・床・柱を同じ寸法規則で接続。 |
 | [17](../../lessons/17_terrain/README.md) | 地形と地面 ✅ | 高低差、通路、視線を単純形状で作る。 |
 | [18](../../lessons/18_collection_instances/README.md) | 反復配置 ✅ | Collection Instance または Geometry Nodes で同じ資産を繰り返す。 |
-| 19 | 照明と色 | 主光源、補助光、環境光で形の読みやすさを比較。 |
+| [19](../../lessons/19_lighting/README.md) | 照明と色 ✅ | 主光源、補助光、環境光で形の読みやすさを比較。 |
 | 20 | カメラと構図 | 視点、焦点距離、前景・中景・背景を整理。 |
 | 21 | 背景の小作品 | 入口のある小部屋か屋外の一角を仕上げる。 |
 

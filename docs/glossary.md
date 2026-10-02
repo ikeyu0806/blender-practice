@@ -134,6 +134,7 @@ Scene（作業する場面）
 | **Non-Color / Pack（非色データ／梱包）** | 粗さ画像は色補正せず数値として読む。Packは画像を.blend内部へ保存する。 [14 テクスチャとマテリアル](../lessons/14_image_material/README.md)。 |
 | **Module（モジュール）** | 接続に使う寸法規則を持つ部品。床の幅と配置間隔を同じにする。 [16 モジュラー背景](../lessons/16_modular_room/README.md)。 |
 | **Collection Instance** | EmptyがCollectionを参照して表示する配置。表示数とMesh.usersは一致しない。 [18 反復配置](../lessons/18_collection_instances/README.md)。 |
+| **Key / Fill / Rim / World** | 主な明暗、暗部の補助、輪郭、環境光を担当する照明の役割。 [19 照明と色](../lessons/19_lighting/README.md)。 |
 
 ## 公式資料
 
