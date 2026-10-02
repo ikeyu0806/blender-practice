@@ -132,6 +132,7 @@ Scene（作業する場面）
 | **Orthographic（平行投影）** | 遠近で物が小さくならない投影。正面・側面の比率比較に使う。 [12 比率とシルエット](../lessons/12_silhouette/README.md)。 |
 | **Loop / UV Island（面の角／UVの島）** | LoopはFaceの角。UVはLoopごとに記録し、つながったUVの領域が島になる。 [13 UV展開](../lessons/13_uv_unwrap/README.md)。 |
 | **Non-Color / Pack（非色データ／梱包）** | 粗さ画像は色補正せず数値として読む。Packは画像を.blend内部へ保存する。 [14 テクスチャとマテリアル](../lessons/14_image_material/README.md)。 |
+| **Module（モジュール）** | 接続に使う寸法規則を持つ部品。床の幅と配置間隔を同じにする。 [16 モジュラー背景](../lessons/16_modular_room/README.md)。 |
 
 ## 公式資料
 

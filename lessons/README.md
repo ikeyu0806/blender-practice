@@ -17,6 +17,7 @@
 | [13](13_uv_unwrap/README.md) | UV展開 | 実装済み |
 | [14](14_image_material/README.md) | テクスチャとマテリアル | 実装済み |
 | [15](15_prop_set/README.md) | 小物セット | 実装済み |
+| [16](16_modular_room/README.md) | モジュラー背景 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
