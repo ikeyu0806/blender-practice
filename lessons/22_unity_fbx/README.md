@@ -2,7 +2,7 @@
 
 ## 目標と前提
 
-接地原点と1mの寸法を持つ木箱をFBXへ書き出し、Unityで照合する手順を用意する。
+入口のある部屋・小物セットと、寸法照合用の1m木箱をFBXへ書き出し、Unityで確認する手順を用意する。
 
 前提は [背景の小作品](../21_environment_project/README.md)。既存の01〜09でObject、Mesh、Collection、Transform、Material、Face、Modifierを理解しておく。この回は他のレッスンの出力ファイルを必要としない。
 
@@ -30,7 +30,7 @@ BlenderはZ上、ここで書き出すFBXはY上・前方-Zの設定。FBXに座
 
 ## 画面とログで観察する
 
-1. 左のExport.Crateと右のImport.Crateを比べる。標準値では両方1mで、底面が原点にある。
+1. 左右の背景セットを比べ、その中のExport.CrateとImport.Crateを確認する。標準値では両方1mで、底面が各Objectの原点にある。
 2. output/22_crate.fbxが生成され、ログのround trip dimensionsが(1,1,1)であることを確認する。
 3. UnityプロジェクトのAssetsへFBXをコピーし、ProjectからSceneへ配置する。1mのCubeと大きさを比べ、InspectorのScale、底面のPivot、上向き、Materialを確認する。
 
@@ -38,7 +38,7 @@ BlenderはZ上、ここで書き出すFBXはY上・前方-Zの設定。FBXに座
 
 ## 手で試す
 
-Unity側の確認欄：使用バージョン＿＿、1m Cubeとの比較＿＿、Y上向き＿＿、Pivotが底面＿＿、Material＿＿。この環境にはUnityがないため、FBX生成とBlender再取り込みを検証済み、Unity側は未実行。実際のゲーム用モデルは21などの部品を同じ規則で選択して書き出す。骨とアニメーションはここでは扱わない。
+Unity側の確認欄：使用バージョン＿＿、1m Cubeとの比較＿＿、Y上向き＿＿、Pivotが底面＿＿、Material＿＿。この環境にはUnityがないため、FBX生成とBlender再取り込みを検証済み、Unity側は未実行。このFBXは21と同じ床・壁・小物の背景セットを含む。Export.Crateは1mと接地原点を照合する追加の基準モデル。骨とアニメーションはここでは扱わない。
 
 手作業の結果は別名の `.blend` に保存する。スクリプトの結果と見比べ、変えたデータがObject・Mesh・Material・その他のどれかをメモする。
 
