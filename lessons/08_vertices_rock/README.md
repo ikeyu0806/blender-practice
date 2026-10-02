@@ -222,4 +222,4 @@ FLIPPED_FACE_NAME = "Upper.Front"
 
 ## 完了条件と次へ
 
-頂点番号からFaceが作られること、頂点順を逆にすると法線が反転することを、Face Orientationとログで説明できれば完了。次はロードマップの **09 小シーンの組み立て** で、木箱と岩を同じSceneへ配置する。
+頂点番号からFaceが作られること、頂点順を逆にすると法線が反転することを、Face Orientationとログで説明できれば完了。次は [09 Face情報の閲覧と編集](../09_face_inspection/README.md) で、面積・法線・Material Slotの閲覧と編集を整理する。木箱と岩を同じSceneへ置く制作は [15 小物セット](../15_prop_set/README.md)で扱う。

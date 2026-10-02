@@ -43,7 +43,9 @@
 | [39](39_inspection_addon/README.md) | 操作用アドオン | 実装済み |
 | [40](40_final_project/README.md) | 最終制作 | 実装済み |
 
-これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
+10〜40は追加済みで、各回にスクリプト・観察手順・変更実験・完了条件があります。22は選択レッスンです。10以降の共通処理は [_support](./_support/README.md)、全31回の生成と再読み込みの確認は [検証手順](../scripts/README.md)へ。
+
+テーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
 ## フォルダとファイル
 
@@ -76,6 +78,12 @@ lessons/
   09_face_inspection/
     README.md
     lesson.py
+  10_mesh_edit/ … 40_final_project/
+    README.md
+    lesson.py
+  _support/
+    scene_tools.py    # 10〜40の配置・保存の共通処理
+    verify_saved.py   # 保存結果だけを検査
 ```
 
 新しいレッスンは `NN_short_topic/` のように番号付きフォルダを作り、少なくとも `README.md` と `lesson.py` を一緒に追加します。生成物は `output/` に保存し、Git には含めません。画像・入力ファイルが必要な回は、その用途と入手・作成方法を README に書きます。

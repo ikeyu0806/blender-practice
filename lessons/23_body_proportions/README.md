@@ -4,7 +4,7 @@
 
 頭1個を単位に、胴・骨盤・上腕・前腕・太腿・脛を配置する。
 
-前提は [Blender → Unity](../22_unity_fbx/README.md)。既存の01〜09でObject、Mesh、Collection、Transform、Material、Face、Modifierを理解しておく。この回は他のレッスンの出力ファイルを必要としない。
+前提は [背景の小作品](../21_environment_project/README.md)。22のUnity連携は選択レッスンなので飛ばして進める。既存の01〜09でObject、Mesh、Collection、Transform、Material、Face、Modifierを理解しておく。この回は他のレッスンの出力ファイルを必要としない。
 
 ## 実行する
 

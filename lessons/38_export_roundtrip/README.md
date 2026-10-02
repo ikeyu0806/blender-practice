@@ -38,7 +38,7 @@ GUI編集はソースへ同期しない。再実行は同じ出力を上書き�
 
 ## 手で試す
 
-任意のglTF対応ビューアへ38_assets.glbを開き、材質と向きを確認する。これはファイル作成までで公開は行わない。アニメーションを書き出す発展課題では、骨・Shape Key・Actionの対応を別途検証する。[Web公開メモ](../../docs/notes/blender-web-publish.md)。
+任意のglTF対応ビューアへ38_assets.glbを開き、材質と向きを確認する。これはファイル作成までで公開は行わない。アニメーションを書き出す発展課題では、骨・Shape Key・Actionの対応を別途検証する。公開方法へ進む前に、[公式glTFの説明](https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html)と対象ビューアの対応形式を確認する。
 
 手作業の結果は別名の `.blend` に保存する。スクリプトの結果と見比べ、変えたデータがObject・Mesh・Material・その他のどれかをメモする。
 

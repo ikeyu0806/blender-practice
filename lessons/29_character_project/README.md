@@ -28,6 +28,8 @@ GUI編集はソースへ同期しない。再実行は同じ出力を上書き�
 
 **Object Mode**で移動すればObjectのTransformが変わり、**Edit Mode**で頂点を動かせばMeshが変わる。Material Previewは材質を、Solid表示は形を調べるときに使う。今回の操作がどのデータに働くか、コードのコメントと画面を照合する。
 
+骨名のLower/Upperは管のローカルZでの位置を表す。人物では管を上下逆に配置し、Lowerが肩・腰側、Upperが手・足側になる。解剖学的な上腕・前腕の名前ではない。骨名を読み替える発展課題ではVertex Group名も同時に変える。
+
 ## 画面とログで観察する
 
 1. output/29_neutral.pngと29_character_project.pngで、腕と脚のシルエットを比べる。
