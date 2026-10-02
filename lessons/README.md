@@ -15,6 +15,7 @@
 | [11](11_normals_shading/README.md) | 法線と面の向き | 実装済み |
 | [12](12_silhouette/README.md) | 比率とシルエット | 実装済み |
 | [13](13_uv_unwrap/README.md) | UV展開 | 実装済み |
+| [14](14_image_material/README.md) | テクスチャとマテリアル | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
