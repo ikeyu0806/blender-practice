@@ -141,6 +141,7 @@ Scene（作業する場面）
 | **Rest / Pose（レスト／ポーズ）** | Edit Modeの基準骨格と、Pose Modeの変形姿勢。Vertex Groupと骨名が変形の対応を決める。 [28 Armatureとウェイト](../lessons/28_armature_weights/README.md)。 |
 | **Shrinkwrap** | 別の表面へ頂点を投影するModifier。低密度Meshの辺の流れは別途設計する。 [32 Sculptとリトポロジー](../lessons/32_sculpt_retopology/README.md)。 |
 | **Idempotent（冪等）** | 同じ生成処理を繰り返しても命名・個数・形が同じ結果になる性質。 [35 再実行可能な生成スクリプト](../lessons/35_repeatable_generation/README.md)。 |
+| **Manifold（多様体）** | ここでは閉じた表面の辺が2面に接すること。開いた地形などは別の検査規則が必要。 [37 アセット検査](../lessons/37_asset_validation/README.md)。 |
 
 ## 公式資料
 
