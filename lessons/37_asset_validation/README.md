@@ -38,9 +38,20 @@ GUI編集はソースへ同期しない。再実行は同じ出力を上書き�
 
 ## 手で試す
 
-別名保存し、右をAsset.Fixedへ改名、Object → Apply → Scale、Edit ModeでRecalculate Outside、UV → Smart UV Projectを行う。検査関数へ修正後Objectを渡し、問題が消えるか確認する。GUI修正後の再検査は関数だけを呼び、全スクリプトの初期化は避ける。
+別名保存し、右をAsset.Fixedへ改名、Object → Apply → Scale、Edit ModeでRecalculate Outside、UV → Smart UV Projectを行う。検査関数へ修正後Objectを渡し、問題が消えるか確認する。GUI修正後の再検査は、Sceneを初期化しないinspection.pyを使う。
 
 手作業の結果は別名の `.blend` に保存する。スクリプトの結果と見比べ、変えたデータがObject・Mesh・Material・その他のどれかをメモする。
+
+修正したObjectを選択し、エリアをPython Consoleへ切り替えて次を実行する。パスはリポジトリを置いた場所に読み替える。
+
+```python
+import sys, bpy
+sys.path.insert(0, "/Users/ikegayayuuki/workspace/blender-practice/lessons/37_asset_validation")
+from inspection import inspect_asset
+inspect_asset(bpy.context.active_object, max_dimension=2.0)
+```
+
+空のリスト `[]` なら検査項目は合格。`inspection.py`には生成や保存処理がないので、手編集したSceneを保ったまま確認できる。
 
 ## 値を1つ変える実験
 

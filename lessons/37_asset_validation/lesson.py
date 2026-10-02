@@ -1,4 +1,5 @@
 """37｜アセット検査。初期化して観察用ファイルを保存する教材。"""
+
 from pathlib import Path
 import sys
 from math import sin, cos, pi, radians
@@ -19,66 +20,49 @@ if str(support_path) not in sys.path:
 import scene_tools as tools
 
 MAX_DIMENSION = 2.0
-lesson_scene, assets_collection=tools.start("AssetValidation")
-stone_material=tools.material("Surface.Stone",(0.25,0.4,0.45))
-good_object=tools.box("Asset.Good",(1,1,1),(-1.2,0,0.5),assets_collection,stone_material)
-bad_object=tools.box("WrongName",(1,1,1),(1.2,0,1),assets_collection,stone_material)
+lesson_scene, assets_collection = tools.start("AssetValidation")
+stone_material = tools.material("Surface.Stone", (0.25, 0.4, 0.45))
+good_object = tools.box(
+    "Asset.Good", (1, 1, 1), (-1.2, 0, 0.5), assets_collection, stone_material
+)
+bad_object = tools.box(
+    "WrongName", (1, 1, 1), (1.2, 0, 1), assets_collection, stone_material
+)
 tools.uv_smart(good_object)
-bad_object.scale.z=2
-bad_bmesh=bmesh.new()
+bad_object.scale.z = 2
+bad_bmesh = bmesh.new()
 bad_bmesh.from_mesh(bad_object.data)
 bad_bmesh.faces.ensure_lookup_table()
-bmesh.ops.reverse_faces(bad_bmesh,faces=[bad_bmesh.faces[0]])
+bmesh.ops.reverse_faces(bad_bmesh, faces=[bad_bmesh.faces[0]])
 bad_bmesh.to_mesh(bad_object.data)
 bad_bmesh.free()
 bad_object.data.update()
 
-def inspect_asset(asset_object):
-    # この規則は閉じた小物用。開いた地形・服は別の規則で検査する。
-    problems=[]
-    if not asset_object.name.startswith("Asset."):
-        problems.append("name: expected Asset. prefix")
-    if any(abs(value-1)>1e-5 for value in asset_object.scale):
-        problems.append("scale: not applied")
-    if max(asset_object.dimensions)>MAX_DIMENSION+1e-5:
-        problems.append("dimensions: too large")
-    asset_mesh=asset_object.data
-    if not asset_mesh.uv_layers:
-        problems.append("UV: missing")
-    if not asset_mesh.materials or any(slot_material is None for slot_material in asset_mesh.materials):
-        problems.append("material: empty slot")
-    for slot_material in asset_mesh.materials:
-        if not slot_material: continue
-        for shader_node in slot_material.node_tree.nodes:
-            if shader_node.type=="TEX_IMAGE":
-                texture_image=shader_node.image
-                if not texture_image or (texture_image.source=="FILE" and not texture_image.packed_file
-                    and not Path(bpy.path.abspath(texture_image.filepath)).is_file()):
-                    problems.append("image: missing reference")
-    inspection_bmesh=bmesh.new()
-    inspection_bmesh.from_mesh(asset_mesh)
-    if any(face.calc_area()<1e-10 for face in inspection_bmesh.faces):
-        problems.append("face: zero area")
-    if any(not edge.is_manifold for edge in inspection_bmesh.edges):
-        problems.append("surface: not closed manifold")
-    elif any(not edge.is_contiguous for edge in inspection_bmesh.edges) or inspection_bmesh.calc_volume(signed=True)<0:
-        problems.append("normals: inconsistent or inward")
-    inspection_bmesh.free()
-    return problems
+# 検査だけを手編集後にも呼べるように、初期化しないモジュールへ分ける。
+sys.path.insert(0, str(Path(source_path).resolve().parent))
+from inspection import inspect_asset
 
 bpy.context.view_layer.update()
-good_problems=inspect_asset(good_object)
-bad_problems=inspect_asset(bad_object)
-assert good_problems==[]
+good_problems = inspect_asset(good_object, MAX_DIMENSION)
+bad_problems = inspect_asset(bad_object, MAX_DIMENSION)
+assert good_problems == []
 assert any("name:" in problem for problem in bad_problems)
 assert any("scale:" in problem for problem in bad_problems)
 assert any("UV:" in problem for problem in bad_problems)
 assert any("normals:" in problem for problem in bad_problems)
-for asset_object,problems in [(good_object,good_problems),(bad_object,bad_problems)]:
-    asset_object["inspection"]="PASS" if not problems else " / ".join(problems)
-    print(asset_object.name,"PASS" if not problems else problems)
+for asset_object, problems in [
+    (good_object, good_problems),
+    (bad_object, bad_problems),
+]:
+    asset_object["inspection"] = "PASS" if not problems else " / ".join(problems)
+    print(asset_object.name, "PASS" if not problems else problems)
 import json
-(tools.OUTPUT/"37_inspection.json").write_text(json.dumps({good_object.name:good_problems,bad_object.name:bad_problems},indent=2))
-tools.studio(lesson_scene,span=5)
+
+(tools.OUTPUT / "37_inspection.json").write_text(
+    json.dumps(
+        {good_object.name: good_problems, bad_object.name: bad_problems}, indent=2
+    )
+)
+tools.studio(lesson_scene, span=5)
 tools.active(bad_object)
-tools.finish(lesson_scene,assets_collection,"37_asset_validation")
+tools.finish(lesson_scene, assets_collection, "37_asset_validation")
