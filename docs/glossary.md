@@ -139,6 +139,7 @@ Scene（作業する場面）
 | **Edge Ring（エッジのリング）** | 管の断面を囲む辺の輪。関節周囲へ複数置き、曲げる領域を作る。 [25 関節周辺のトポロジー](../lessons/25_joint_topology/README.md)。 |
 | **Solidify** | 面へ厚みを追加するModifier。服と体を別Meshにし、厚みと隙間を別々に管理する。 [26 衣装と部品分割](../lessons/26_clothing_parts/README.md)。 |
 | **Rest / Pose（レスト／ポーズ）** | Edit Modeの基準骨格と、Pose Modeの変形姿勢。Vertex Groupと骨名が変形の対応を決める。 [28 Armatureとウェイト](../lessons/28_armature_weights/README.md)。 |
+| **Shrinkwrap** | 別の表面へ頂点を投影するModifier。低密度Meshの辺の流れは別途設計する。 [32 Sculptとリトポロジー](../lessons/32_sculpt_retopology/README.md)。 |
 
 ## 公式資料
 
