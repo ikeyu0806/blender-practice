@@ -1,4 +1,5 @@
 """16｜モジュラー背景。初期化して観察用ファイルを保存する教材。"""
+
 from pathlib import Path
 import sys
 from math import sin, cos, pi, radians
@@ -20,12 +21,26 @@ import scene_tools as tools
 
 MODULE_SIZE = 2.0
 lesson_scene, assets_collection = tools.start("ModularRoom")
-lintel_object = tools.room(assets_collection,MODULE_SIZE)
+lintel_object = tools.room(assets_collection, MODULE_SIZE)
 # 接続規則を数値でも確認。床中心の間隔と幅が等しいので継ぎ目に隙間がない。
-floor_objects = [asset_object for asset_object in assets_collection.objects if ".Floor." in asset_object.name]
-assert len(floor_objects)==9
-assert all(abs(asset_object.dimensions.x-MODULE_SIZE)<1e-5 for asset_object in floor_objects)
-print("floor tiles:",len(floor_objects),"grid spacing:",MODULE_SIZE,"room width:",3*MODULE_SIZE)
-tools.studio(lesson_scene,span=9,target=(0,0,1))
+floor_objects = [
+    asset_object
+    for asset_object in assets_collection.objects
+    if ".Floor." in asset_object.name
+]
+assert len(floor_objects) == 9
+assert all(
+    abs(asset_object.dimensions.x - MODULE_SIZE) < 1e-5
+    for asset_object in floor_objects
+)
+print(
+    "floor tiles:",
+    len(floor_objects),
+    "grid spacing:",
+    MODULE_SIZE,
+    "room width:",
+    3 * MODULE_SIZE,
+)
+tools.studio(lesson_scene, span=9, target=(0, 0, 1))
 tools.active(lintel_object)
-tools.finish(lesson_scene,assets_collection,"16_modular_room")
+tools.finish(lesson_scene, assets_collection, "16_modular_room")

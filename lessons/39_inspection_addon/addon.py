@@ -1,4 +1,5 @@
 """選択Meshの情報を表示する、小さなローカル用アドオン。"""
+
 import bpy
 
 bl_info = {
@@ -21,9 +22,11 @@ class LESSON39_OT_inspect(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        return (context.active_object is not None
-                and context.active_object.type == "MESH"
-                and context.active_object.mode == "OBJECT")
+        return (
+            context.active_object is not None
+            and context.active_object.type == "MESH"
+            and context.active_object.mode == "OBJECT"
+        )
 
     def execute(self, context):
         mesh_object = context.active_object
@@ -31,7 +34,10 @@ class LESSON39_OT_inspect(bpy.types.Operator):
         # この操作は形を変えず、ObjectのCustom Propertiesへ観察値を残す。
         mesh_object["lesson39_vertex_count"] = len(source_mesh.vertices)
         mesh_object["lesson39_face_count"] = len(source_mesh.polygons)
-        self.report({"INFO"}, f"{source_mesh.name}: {len(source_mesh.vertices)} vertices / {len(source_mesh.polygons)} faces")
+        self.report(
+            {"INFO"},
+            f"{source_mesh.name}: {len(source_mesh.vertices)} vertices / {len(source_mesh.polygons)} faces",
+        )
         return {"FINISHED"}
 
 
