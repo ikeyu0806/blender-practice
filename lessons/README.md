@@ -12,6 +12,7 @@
 | [08](08_vertices_rock/README.md) | 頂点から作る岩とFaceの向き | 実装済み |
 | [09](09_face_inspection/README.md) | Face情報の閲覧と編集 | 実装済み |
 | [10](10_mesh_edit/README.md) | メッシュ編集の基本 | 実装済み |
+| [11](11_normals_shading/README.md) | 法線と面の向き | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 

@@ -128,6 +128,7 @@ Scene（作業する場面）
 | 用語 | 意味と観察する回 |
 |---|---|
 | **Loop Cut（ループカット）** | 連続する四角面へ周回する切れ目を追加する編集。全辺のSubdivideとは対象が違う。 [10 メッシュ編集の基本](../lessons/10_mesh_edit/README.md)。 |
+| **Smooth Shading（スムーズ表示）** | 隣り合う面の陰影を補間する。頂点数や外周の形は増えない。 [11 法線と面の向き](../lessons/11_normals_shading/README.md)。 |
 
 ## 公式資料
 
