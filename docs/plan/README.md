@@ -105,7 +105,7 @@
 | [35](../../lessons/35_repeatable_generation/README.md) | 再実行可能な生成スクリプト ✅ | 何度走らせても結果と命名が安定するようにする。 |
 | [36](../../lessons/36_dependency_evaluation/README.md) | 依存関係と評価結果 ✅ | Modifier や Geometry Nodes の評価前後を調べる。 |
 | [37](../../lessons/37_asset_validation/README.md) | アセット検査 ✅ | 寸法、法線、参照切れ、命名をまとめて検査。 |
-| 38 | 書き出しと再取り込み | 人物・モンスター・背景を用途に合わせて検証。 |
+| [38](../../lessons/38_export_roundtrip/README.md) | 書き出しと再取り込み ✅ | 人物・モンスター・背景を用途に合わせて検証。 |
 | 39 | 操作用アドオン | 繰り返す処理を小さな Blender UI にする。 |
 | 40 | 最終制作 | 3種類のモデルを1つのシーンで見せ、生成・検査手順も残す。 |
 

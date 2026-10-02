@@ -39,6 +39,7 @@
 | [35](35_repeatable_generation/README.md) | 再実行可能な生成スクリプト | 実装済み |
 | [36](36_dependency_evaluation/README.md) | 依存関係と評価結果 | 実装済み |
 | [37](37_asset_validation/README.md) | アセット検査 | 実装済み |
+| [38](38_export_roundtrip/README.md) | 書き出しと再取り込み | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
