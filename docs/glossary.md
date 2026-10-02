@@ -140,6 +140,7 @@ Scene（作業する場面）
 | **Solidify** | 面へ厚みを追加するModifier。服と体を別Meshにし、厚みと隙間を別々に管理する。 [26 衣装と部品分割](../lessons/26_clothing_parts/README.md)。 |
 | **Rest / Pose（レスト／ポーズ）** | Edit Modeの基準骨格と、Pose Modeの変形姿勢。Vertex Groupと骨名が変形の対応を決める。 [28 Armatureとウェイト](../lessons/28_armature_weights/README.md)。 |
 | **Shrinkwrap** | 別の表面へ頂点を投影するModifier。低密度Meshの辺の流れは別途設計する。 [32 Sculptとリトポロジー](../lessons/32_sculpt_retopology/README.md)。 |
+| **Idempotent（冪等）** | 同じ生成処理を繰り返しても命名・個数・形が同じ結果になる性質。 [35 再実行可能な生成スクリプト](../lessons/35_repeatable_generation/README.md)。 |
 
 ## 公式資料
 
