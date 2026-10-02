@@ -24,6 +24,7 @@
 | [20](20_camera_composition/README.md) | カメラと構図 | 実装済み |
 | [21](21_environment_project/README.md) | 背景の小作品 | 実装済み |
 | [22](22_unity_fbx/README.md) | Blender → Unity | 実装済み |
+| [23](23_body_proportions/README.md) | 人体の大きな比率 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
