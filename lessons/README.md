@@ -37,6 +37,7 @@
 | [33](33_expression_deformation/README.md) | 変形と表情 | 実装済み |
 | [34](34_monster_project/README.md) | モンスターの小作品 | 実装済み |
 | [35](35_repeatable_generation/README.md) | 再実行可能な生成スクリプト | 実装済み |
+| [36](36_dependency_evaluation/README.md) | 依存関係と評価結果 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
