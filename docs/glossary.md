@@ -130,6 +130,7 @@ Scene（作業する場面）
 | **Loop Cut（ループカット）** | 連続する四角面へ周回する切れ目を追加する編集。全辺のSubdivideとは対象が違う。 [10 メッシュ編集の基本](../lessons/10_mesh_edit/README.md)。 |
 | **Smooth Shading（スムーズ表示）** | 隣り合う面の陰影を補間する。頂点数や外周の形は増えない。 [11 法線と面の向き](../lessons/11_normals_shading/README.md)。 |
 | **Orthographic（平行投影）** | 遠近で物が小さくならない投影。正面・側面の比率比較に使う。 [12 比率とシルエット](../lessons/12_silhouette/README.md)。 |
+| **Loop / UV Island（面の角／UVの島）** | LoopはFaceの角。UVはLoopごとに記録し、つながったUVの領域が島になる。 [13 UV展開](../lessons/13_uv_unwrap/README.md)。 |
 
 ## 公式資料
 
