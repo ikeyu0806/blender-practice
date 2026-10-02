@@ -26,6 +26,7 @@
 | [22](22_unity_fbx/README.md) | Blender → Unity | 実装済み |
 | [23](23_body_proportions/README.md) | 人体の大きな比率 | 実装済み |
 | [24](24_face_hair/README.md) | 顔と髪のブロックアウト | 実装済み |
+| [25](25_joint_topology/README.md) | 関節周辺のトポロジー | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 

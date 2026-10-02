@@ -136,6 +136,7 @@ Scene（作業する場面）
 | **Collection Instance** | EmptyがCollectionを参照して表示する配置。表示数とMesh.usersは一致しない。 [18 反復配置](../lessons/18_collection_instances/README.md)。 |
 | **Key / Fill / Rim / World** | 主な明暗、暗部の補助、輪郭、環境光を担当する照明の役割。 [19 照明と色](../lessons/19_lighting/README.md)。 |
 | **Focal Length（焦点距離）** | Cameraの画角を決めるmm単位の設定。遠近の大小関係はCamera位置によって変わる。 [20 カメラと構図](../lessons/20_camera_composition/README.md)。 |
+| **Edge Ring（エッジのリング）** | 管の断面を囲む辺の輪。関節周囲へ複数置き、曲げる領域を作る。 [25 関節周辺のトポロジー](../lessons/25_joint_topology/README.md)。 |
 
 ## 公式資料
 
