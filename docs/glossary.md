@@ -123,6 +123,12 @@ Scene（作業する場面）
 - **Object Mode と Edit Mode:** 前者は Object 全体、後者は形状の中身を主に扱う。
 - **保存と書き出し:** `.blend` 保存は編集を続けるため。FBX などの書き出しは他のアプリへ渡すため。
 
+## 追加レッスンで使う用語
+
+| 用語 | 意味と観察する回 |
+|---|---|
+| **Loop Cut（ループカット）** | 連続する四角面へ周回する切れ目を追加する編集。全辺のSubdivideとは対象が違う。 [10 メッシュ編集の基本](../lessons/10_mesh_edit/README.md)。 |
+
 ## 公式資料
 
 - [Blender Manual: Object と Object Data](https://docs.blender.org/manual/en/latest/scene_layout/object/introduction.html)

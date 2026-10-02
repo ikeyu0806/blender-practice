@@ -4,7 +4,7 @@
 
 人物、モンスター、背景を、自分で設計・制作・修正・書き出しできるようになる。最終的には Blender のデータ構造と Python API を理解し、再実行可能な制作スクリプト、再利用できる道具、品質を確かめる手順まで自分で作れる状態を目指す。
 
-この表は**今後追加するレッスンの設計図**。現時点で実装済みなのは [01 共有 Mesh](../../lessons/01_shared_mesh/README.md)、[02 Transform と親子](../../lessons/02_parent_transform/README.md)、[03 Collection](../../lessons/03_collection/README.md)、[04 木箱の組み立て](../../lessons/04_crate_origin/README.md)、[05 マテリアルの入口](../../lessons/05_material_basics/README.md)、[06 Material Slot](../../lessons/06_material_slots/README.md)、[07 Modifierの評価](../../lessons/07_modifier_evaluation/README.md)、[08 頂点から作る岩](../../lessons/08_vertices_rock/README.md)、[09 Face情報の閲覧と編集](../../lessons/09_face_inspection/README.md)。番号順に全部終えることより、各段階の小さな完成物を作り、疑問が出たらその場で扱うことを優先する。
+この表はレッスンの設計図と実装状況。✅の回はスクリプトとREADMEを用意済み。[レッスン一覧](../../lessons/README.md)から開ける。番号順に終えることより、各段階の完成条件を満たし、疑問が出たらその場で扱うことを優先する。
 
 最初は **Blender の世界だけ**で形、配置、マテリアル、複数部品の組み立てを学ぶ。Unity 連携は背景の小作品まで作れた後の選択レッスンに置く。最初から Unity の用語を前提にしない。
 
@@ -42,7 +42,7 @@
 
 | 番号 | テーマ | 手を動かして確認すること |
 |---|---|---|
-| 10 | メッシュ編集の基本 | 押し出し、ループ、面の選択を使って形を変える。 |
+| [10](../../lessons/10_mesh_edit/README.md) | メッシュ編集の基本 ✅ | 押し出し、ループ、面の選択を使って形を変える。 |
 | 11 | 法線と面の向き | 裏面、スムーズ表示、シャープな縁を見分ける。 |
 | 12 | 比率とシルエット | 参照画像から単純な形へ分解し、遠目の形を比較。 |
 | 13 | UV 展開 | 面の切れ目とテクスチャの伸びを観察。 |
