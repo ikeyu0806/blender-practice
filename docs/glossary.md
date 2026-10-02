@@ -135,6 +135,7 @@ Scene（作業する場面）
 | **Module（モジュール）** | 接続に使う寸法規則を持つ部品。床の幅と配置間隔を同じにする。 [16 モジュラー背景](../lessons/16_modular_room/README.md)。 |
 | **Collection Instance** | EmptyがCollectionを参照して表示する配置。表示数とMesh.usersは一致しない。 [18 反復配置](../lessons/18_collection_instances/README.md)。 |
 | **Key / Fill / Rim / World** | 主な明暗、暗部の補助、輪郭、環境光を担当する照明の役割。 [19 照明と色](../lessons/19_lighting/README.md)。 |
+| **Focal Length（焦点距離）** | Cameraの画角を決めるmm単位の設定。遠近の大小関係はCamera位置によって変わる。 [20 カメラと構図](../lessons/20_camera_composition/README.md)。 |
 
 ## 公式資料
 

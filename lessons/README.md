@@ -21,6 +21,7 @@
 | [17](17_terrain/README.md) | 地形と地面 | 実装済み |
 | [18](18_collection_instances/README.md) | 反復配置 | 実装済み |
 | [19](19_lighting/README.md) | 照明と色 | 実装済み |
+| [20](20_camera_composition/README.md) | カメラと構図 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
