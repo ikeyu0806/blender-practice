@@ -215,18 +215,27 @@ def humanoid(assets_collection, head_size=0.65, posed=False):
     limb_rigs = []
     for side in (-1,1):
         arm_object = tube(f"Character.Arm.{side}",[0,0.4,0.5,0.6,1.0],[0.13]*5,assets_collection,skin_material)
-        arm_object.location = (side*0.68,0,1.6)
+        arm_object.location = (side*0.68,0,2.6)
+        arm_object.rotation_euler.x = pi
         arm_rig_object = two_bone_rig(f"Rig.Arm.{side}",arm_object,0.5,assets_collection)
+        arm_rig_object.rotation_euler.x = pi
         leg_object = tube(f"Character.Leg.{side}",[0,0.65,0.75,0.85,1.45],[0.16]*5,assets_collection,cloth_material)
-        leg_object.location = (side*0.23,0,0.2)
+        leg_object.location = (side*0.23,0,1.65)
+        leg_object.rotation_euler.x = pi
         leg_rig_object = two_bone_rig(f"Rig.Leg.{side}",leg_object,0.75,assets_collection)
-        box(f"Character.Foot.{side}",(0.36,0.6,0.2),(side*0.23,-0.15,0.1),assets_collection,hair_material)
+        leg_rig_object.rotation_euler.x = pi
+        foot_object = box(f"Character.Foot.{side}",(0.36,0.6,0.2),(side*0.23,-0.15,0.1),assets_collection,hair_material)
+        # 足はUpper（膝より先の骨）へ100%割り当て、脛と一緒に追従させる。
+        foot_group = foot_object.vertex_groups.new(name="Upper")
+        foot_group.add(list(range(len(foot_object.data.vertices))),1,"REPLACE")
+        foot_modifier = foot_object.modifiers.new("FollowShin","ARMATURE")
+        foot_modifier.object = leg_rig_object
         limb_rigs.extend([arm_rig_object,leg_rig_object])
-    # キーフレーム1で中立姿勢、24で肘と膝が曲がる。足・頭は別Objectのまま。
+    # キーフレーム1で中立姿勢、24で肩と腰を固定して肘と膝を曲げる。
     for rig_object in limb_rigs:
         upper_pose_bone = rig_object.pose.bones["Upper"]
         upper_pose_bone.keyframe_insert("rotation_euler",frame=1)
-        upper_pose_bone.rotation_euler.x = radians(35 if ".Arm." in rig_object.name else -25)
+        upper_pose_bone.rotation_euler.x = radians(-35 if ".Arm." in rig_object.name else 25)
         upper_pose_bone.keyframe_insert("rotation_euler",frame=24)
     bpy.context.scene.frame_end = 24
     bpy.context.scene.frame_set(24 if posed else 1)
@@ -256,12 +265,13 @@ def monster(assets_collection, posed=False, horn_height=0.6):
     for point in mouth_shape_key.data:
         if point.co.y < 0 and point.co.z < 0:
             point.co.z -= 0.25*(-point.co.y/0.5)
+    mouth_shape_key.value = 0
     mouth_shape_key.keyframe_insert("value",frame=1)
     mouth_shape_key.value = 1
     mouth_shape_key.keyframe_insert("value",frame=24)
     upper_pose_bone = tail_rig_object.pose.bones["Upper"]
     upper_pose_bone.keyframe_insert("rotation_euler",frame=1)
-    upper_pose_bone.rotation_euler.z = radians(40)
+    upper_pose_bone.rotation_euler.y = radians(40)
     upper_pose_bone.keyframe_insert("rotation_euler",frame=24)
     bpy.context.scene.frame_end = 24
     bpy.context.scene.frame_set(24 if posed else 1)
