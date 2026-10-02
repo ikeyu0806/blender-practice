@@ -32,6 +32,7 @@
 | [28](28_armature_weights/README.md) | Armatureとウェイト | 実装済み |
 | [29](29_character_project/README.md) | 人物の小作品 | 実装済み |
 | [30](30_creature_silhouette/README.md) | 生物のシルエット | 実装済み |
+| [31](31_creature_structure/README.md) | 非人体の構造 | 実装済み |
 
 これからのテーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
