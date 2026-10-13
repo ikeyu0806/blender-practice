@@ -14,13 +14,13 @@ def main():
         "--blender", default="/Applications/Blender.app/Contents/MacOS/Blender"
     )
     parser.add_argument("--start", type=int, default=10)
-    parser.add_argument("--end", type=int, default=40)
+    parser.add_argument("--end", type=int, default=41)
     parser.add_argument(
         "--saved-only", action="store_true", help="生成せず、既存の出力だけ確認"
     )
     arguments = parser.parse_args()
-    if not 10 <= arguments.start <= arguments.end <= 40:
-        parser.error("確認範囲は10〜40で指定してください")
+    if not 10 <= arguments.start <= arguments.end <= 41:
+        parser.error("確認範囲は10〜41で指定してください")
     log_directory = ROOT / "output" / "verification"
     log_directory.mkdir(parents=True, exist_ok=True)
     folders = sorted(

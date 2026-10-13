@@ -1,6 +1,6 @@
 # レッスンのまとめて確認
 
-通常のPythonから、10〜40の教材をBlenderで順に生成し、保存したファイルを別のBlenderプロセスで開いて確認できます。
+通常のPythonから、10〜41の教材をBlenderで順に生成し、保存したファイルを別のBlenderプロセスで開いて確認できます。
 
 ```bash
 python3 scripts/verify_lessons.py
@@ -20,6 +20,6 @@ python3 scripts/verify_lessons.py --saved-only
 python3 scripts/verify_lessons.py --start 37 --end 40 --blender /Applications/Blender.app/Contents/MacOS/Blender
 ```
 
-生成時は各回の固有検査と保存処理を実行します。再読み込み時はObject名、型、データ参照名、Meshの頂点・面数、Cameraを照合します。29・33・34・40では、フレーム1と24の評価後座標を比べ、アニメーションが保存後も動くことを確認します。31回のデータ検査はBlender 5.2.2 LTSで確認済み（2026-10-02）。各回のGUI練習と完了条件は別に実施してください。
+生成時は各回の固有検査と保存処理を実行します。再読み込み時はObject名、型、データ参照名、Meshの頂点・面数、Cameraを照合します。29・33・34・40では、フレーム1と24の評価後座標を比べ、アニメーションが保存後も動くことを確認します。10〜40のデータ検査はBlender 5.2.2 LTSで確認済み（2026-10-02）。41も同じ環境で確認済み（2026-10-13）。各回のGUI練習と完了条件は別に実施してください。
 
 詳しいログは `output/verification/` に保存され、Gitには含みません。生成に失敗すると、その回で止まり、終了コード1とログの末尾を出します。後続の成功だけで失敗を見落とさないための仕組みです。

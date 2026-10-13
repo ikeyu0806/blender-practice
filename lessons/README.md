@@ -42,8 +42,9 @@
 | [38](38_export_roundtrip/README.md) | 書き出しと再取り込み | 実装済み |
 | [39](39_inspection_addon/README.md) | 操作用アドオン | 実装済み |
 | [40](40_final_project/README.md) | 最終制作 | 実装済み |
+| [41](41_blue_dress_avatar/README.md) | 青いワンピースのアバター | 実装済み |
 
-10〜40は追加済みで、各回にスクリプト・観察手順・変更実験・完了条件があります。22は選択レッスンです。10以降の共通処理は [_support](./_support/README.md)、全31回の生成と再読み込みの確認は [検証手順](../scripts/README.md)へ。
+10〜41は追加済みで、各回にスクリプト・観察手順・変更実験・完了条件があります。22は選択レッスンです。41はロードマップ本編のあとで、公開アバターと同じ設計を単純形状で観察する制作例です。10以降の共通処理は [_support](./_support/README.md)、全32回の生成と再読み込みの確認は [検証手順](../scripts/README.md)へ。
 
 テーマと順番は [ロードマップ](../docs/plan/README.md) を参照してください。
 
@@ -78,11 +79,11 @@ lessons/
   09_face_inspection/
     README.md
     lesson.py
-  10_mesh_edit/ … 40_final_project/
+  10_mesh_edit/ … 41_blue_dress_avatar/
     README.md
     lesson.py
   _support/
-    scene_tools.py    # 10〜40の配置・保存の共通処理
+    scene_tools.py    # 10〜41の配置・保存の共通処理
     verify_saved.py   # 保存結果だけを検査
 ```
 

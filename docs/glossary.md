@@ -143,6 +143,7 @@ Scene（作業する場面）
 | **Idempotent（冪等）** | 同じ生成処理を繰り返しても命名・個数・形が同じ結果になる性質。 [35 再実行可能な生成スクリプト](../lessons/35_repeatable_generation/README.md)。 |
 | **Manifold（多様体）** | ここでは閉じた表面の辺が2面に接すること。開いた地形などは別の検査規則が必要。 [37 アセット検査](../lessons/37_asset_validation/README.md)。 |
 | **glTF / GLB** | 材質などと3Dモデルを交換する形式。GLBはバイナリ1ファイルにまとめる。 [38 書き出しと再取り込み](../lessons/38_export_roundtrip/README.md)。 |
+| **VRM** | 人型の骨・表情・色画像を1つにまとめて渡すファイル形式。形の編集を続ける正本とは別に、Blenderへ読み込む入力にする。 [41 青いワンピースのアバター](../lessons/41_blue_dress_avatar/README.md)。 |
 | **Operator / Panel（操作／パネル）** | UIから呼び出す処理と、そのボタンなどを表示する場所。登録は.blend保存だけでは永続化しない。 [39 操作用アドオン](../lessons/39_inspection_addon/README.md)。 |
 
 ## 公式資料

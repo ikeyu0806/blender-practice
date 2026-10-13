@@ -1,4 +1,4 @@
-"""10–40で繰り返す配置・保存だけをまとめる。学習対象の処理は各lesson.pyへ。"""
+"""10–41で繰り返す配置・保存だけをまとめる。学習対象の処理は各lesson.pyへ。"""
 
 from pathlib import Path
 from math import cos, sin, pi
