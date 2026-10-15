@@ -191,4 +191,4 @@ BEVEL_SEGMENTS = 3
 
 ## 完了条件と次へ
 
-2つのObjectが同じ元Meshを参照していること、右ObjectだけがBevel Modifierを持つこと、評価後だけ要素数が増えることを画面とログで確認できれば完了。次は [08 頂点から作る岩](../08_vertices_rock/README.md) で、頂点・辺・面を自分で定義する。
+2つのObjectが同じ元Meshを参照していること、右ObjectだけがBevel Modifierを持つこと、評価後だけ要素数が増えることを画面とログで確認できれば完了。次は [08 頂点から作る岩](../08_vertices_rock/README.md) で、頂点・辺・面を自分で定義する。Modifierの種類ごとの働きは [カタログ](../../docs/notes/modifiers.md) の42以降で、1種類ずつ観察できる。

@@ -19,3 +19,5 @@
 - [Blender の Scene は画面のどこで管理する？](scene-ui.md)
 - [Rails風ER図で理解するObject・Mesh・Face・Material Slot・Material](mesh-material-slots-er.md)
 - [Blender から Unity へ持ち込むのはいつ、どう学ぶか](blender-unity-import.md)
+- [BlenderのModifierはどの順番で観察するか](modifiers.md)
+- [モデルの質はどこで分かれるか](model-quality.md)

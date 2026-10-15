@@ -119,6 +119,32 @@
 
 **通過条件:** ワンピースを隠しても体が残り、裾の半径を変えても身長と足元が変わらないことを説明できる。公開モデルはVRoid Studioで形を作り、VRMでBlenderへ渡し、材質を調整してGLBにする。この回はその設計を単純形状で観察する。
 
+### 追加｜Modifierを種類ごとに観察する（42–91）
+
+07で元Meshと評価結果の違いを確認したあと、必要な種類だけ開く。本編01〜41の順番は置き換えない。全体の対応表は [Modifierカタログ](../notes/modifiers.md)。
+
+| 範囲 | テーマ | 手を動かして確認すること |
+|---|---|---|
+| [42–49](../../lessons/42_data_transfer/README.md) | 編集 ✅ | 頂点グループ、法線、UVを、形を増やさずに評価結果へ書く。 |
+| [50–68](../../lessons/50_array/README.md) | 生成 ✅ | 繰り返し、開口、厚み、鏡像、体積など、評価後の要素が増減する加工を見る。 |
+| [69–83](../../lessons/69_cast/README.md) | 変形 ✅ | 頂点を動かして曲げ、吸着、波を作り、元の座標は残す。 |
+| [84–90](../../lessons/84_cloth/README.md) | 物理演算 ✅ | フレームを進めて布、海面、粒、柔らかい塊の評価結果を見る。 |
+| [91](../../lessons/91_grease_pencil_subdiv/README.md) | Grease Pencil ✅ | 線の点に働くModifierが、Mesh用とは別メニューであることを見る。 |
+
+Bevelは [07](../../lessons/07_modifier_evaluation/README.md)、Armatureは [28](../../lessons/28_armature_weights/README.md)、Geometry Nodesは [36](../../lessons/36_dependency_evaluation/README.md)。外部キャッシュが必要なMesh Cacheと、大きなベイクが必要なFluid、Dynamic Paintはカタログで役割だけを説明する。
+
+### 追加｜モデルの質はどこで分かれるか（92–101）
+
+頂点を増やせば必ず滑らかになるわけではない。面の並び、質感の分け方、光源の大きさを、必要な回だけ開く。対応表は [モデルの質](../notes/model-quality.md)。
+
+| 範囲 | テーマ | 手を動かして確認すること |
+|---|---|---|
+| [92–95](../../lessons/92_subsurf_topology/README.md) | 形 ✅ | 同じ分割でも極は残り、支えの辺とCreaseで角を留め、外寸を保ったまま頂点数を変える。 |
+| [96–100](../../lessons/96_roughness_variation/README.md) | 表面 ✅ | Roughnessを1つの物の中で分け、BumpとDisplace、面取りの順番、未適用のScale、画素数を比べる。 |
+| [101](../../lessons/101_light_size/README.md) | 光 ✅ | Energyを揃え、Areaライトの一辺で影の境界の幅が変わることをRenderedで見る。 |
+
+フラットシェーディングは [11](../../lessons/11_normals_shading/README.md)、ライトの役割は [19](../../lessons/19_lighting/README.md)、厚みは [61](../../lessons/61_solidify/README.md)。Array、Boolean、Curveは [50](../../lessons/50_array/README.md)、[51](../../lessons/51_boolean/README.md)、[70](../../lessons/70_curve/README.md)。
+
 ## レッスンを追加するとき
 
 「次のレッスンを追加して」「UV 展開を学びたい」のように依頼する。既存レッスンと前提を見て、[レッスンの作成規約](../../lessons/README.md) に沿って **`lessons/<番号>_<テーマ>/lesson.py` と `README.md` を一緒に追加**する。題材に応じて他のファイルが必要なら同じフォルダに置く。実行できる環境では Blender のバックグラウンド実行で確認し、まとまりごとに Git commit する。

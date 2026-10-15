@@ -65,7 +65,7 @@ Scene（作業する場面）
 | **Primitive（プリミティブ）** | 立方体、球、円柱など、基本形状。 | 木箱の板を立方体から作る。 |
 | **Extrude（押し出し）** | 選択した頂点・辺・面から新しい形状を伸ばす操作。 | 面を押し出して取っ手を作る。 |
 | **Bevel（ベベル）** | 角や辺に幅を付け、鋭い角を丸める操作・Modifier。 | 木箱の縁を少し丸める。 |
-| **Modifier（モディファイア）** | 元の形状を直接編集せず、表示・評価結果に加工を加える仕組み。必要に応じて適用できる。 | Bevel で角を丸める。 |
+| **Modifier（モディファイア）** | 元の形状を直接編集せず、表示・評価結果に加工を加える仕組み。必要に応じて適用できる。種類ごとの観察は [カタログ](notes/modifiers.md)。 | Bevel で角を丸める。 |
 | **Evaluated Mesh（評価後メッシュ）** | Modifier などを計算した後に得られる形状。元の Mesh とは頂点数が違うことがある。 | [レッスン07](../lessons/07_modifier_evaluation/README.md)でBevelの前後を比較する。 |
 | **Sculpt（スカルプト）** | 粘土を扱うようにブラシで形を作る方法。 | モンスターの筋肉や角の形を作る。 |
 | **Retopology（リトポロジー）** | 既存の形を参考に、扱いやすい辺・面の構成へ作り直すこと。 | 高密度に造形したモンスターを動かしやすい Mesh にする。 |
@@ -145,6 +145,14 @@ Scene（作業する場面）
 | **glTF / GLB** | 材質などと3Dモデルを交換する形式。GLBはバイナリ1ファイルにまとめる。 [38 書き出しと再取り込み](../lessons/38_export_roundtrip/README.md)。 |
 | **VRM** | 人型の骨・表情・色画像を1つにまとめて渡すファイル形式。形の編集を続ける正本とは別に、Blenderへ読み込む入力にする。 [41 青いワンピースのアバター](../lessons/41_blue_dress_avatar/README.md)。 |
 | **Operator / Panel（操作／パネル）** | UIから呼び出す処理と、そのボタンなどを表示する場所。登録は.blend保存だけでは永続化しない。 [39 操作用アドオン](../lessons/39_inspection_addon/README.md)。 |
+| **Array / Mirror / Boolean** | 評価後にコピーを並べる、原点で反対側を作る、別Objectとの差分を取る生成系Modifier。元Meshの頂点数は残る。 [50](../lessons/50_array/README.md)、[56](../lessons/56_mirror/README.md)、[51](../lessons/51_boolean/README.md)。 |
+| **Subdivision Surface** | 面を繰り返し分割し、評価後の表面を滑らかに近づけるModifier。元の少ない頂点で大きな形を編集する。 [62](../lessons/62_subdivision/README.md)。 |
+| **Lattice** | 少数の格子点で、中にあるMeshの評価後座標を曲げるObjectとModifier。 [74](../lessons/74_lattice/README.md)。 |
+| **Volume** | 表面の頂点ではなく、升目の密度で煙や中身を持つObject Data。Mesh to VolumeとVolume to Meshで表面と行き来する。 [66](../lessons/66_mesh_to_volume/README.md)。 |
+| **支えの辺（Support Loop）** | 残したい角のすぐ内側に足す辺。Subdivisionの丸みが、その区間より外側へ広がりにくくなる。 [93](../lessons/93_support_loops/README.md)。 |
+| **Edge Crease** | 辺に持たせる折れの強さ。頂点を増やさず、Subdivision後の角を元の位置へ留める。Blender 5.2では辺の`crease_edge`属性。 [94](../lessons/94_edge_crease/README.md)。 |
+| **Bump** | マテリアルが法線だけを傾け、頂点は動かない凹凸。輪郭は変わらない。頂点を動かすDisplaceとは別。 [97](../lessons/97_bump_vs_geometry/README.md)。 |
+| **PBR（物理ベースの質感）** | 色、金属、粗さのように、光の当たり方を分けるマテリアルの組み立て。Principled BSDFが入口。全面を1つのRoughnessにすると反射が均一になる。 [05](../lessons/05_material_basics/README.md)、[96](../lessons/96_roughness_variation/README.md)。 |
 
 ## 公式資料
 
